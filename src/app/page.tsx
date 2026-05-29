@@ -11,20 +11,10 @@ import { CTA } from "@/features/home/cta/cta";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
+    <main className="container-custom py-20">
+      <h1 className="heading-xl">The Purple Shop</h1>
 
-      <main>
-        <Hero />
-        <Story />
-        <Materials />
-        <Collections />
-        <Process />
-        <Gallery />
-        <CTA />
-      </main>
-
-      <Footer />
-    </>
+      <p className="body-lg mt-6">Dreamy. Retro. Y2K Vibes.</p>
+    </main>
   );
 }

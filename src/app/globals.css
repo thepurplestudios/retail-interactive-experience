@@ -1,26 +1,139 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --background: #f5f0fc;
+  --surface: #ffffff;
+
+  --primary: #5b3f78;
+  --primary-dark: #40295c;
+
+  --secondary: #d8c8f0;
+  --accent: #cda4ff;
+
+  --text: #2d2437;
+  --text-muted: #756985;
+
+  --border: #e8def5;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+
+  /* Layout */
+  --container-width: 1440px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+
+  font-family: var(--font-body), sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+/* ---------- Layout ---------- */
+
+.container-custom {
+  width: min(100% - 2rem, var(--container-width));
+  margin-inline: auto;
+}
+
+.section-spacing {
+  padding-block: 8rem;
+}
+
+/* ---------- Typography ---------- */
+
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+.heading-xl {
+  font-family: var(--font-display), serif;
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 0.95;
+  font-weight: 500;
+}
+
+.heading-lg {
+  font-family: var(--font-display), serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  font-weight: 500;
+}
+
+.heading-md {
+  font-family: var(--font-display), serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.body-lg {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.body-md {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.caption {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Utilities ---------- */
+
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.card-soft {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.gradient-lavender {
+  background: linear-gradient(135deg, #f5f0fc 0%, #e7d8ff 50%, #f5f0fc 100%);
 }

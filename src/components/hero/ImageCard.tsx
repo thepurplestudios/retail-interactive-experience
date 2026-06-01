@@ -15,7 +15,15 @@ interface ImageCardProps {
 
   price?: string;
 
-  variant?: "editorial" | "product";
+  description?: string;
+  linkText?: string;
+
+  variant?:
+    | "editorial"
+    | "product"
+    | "smallProduct"
+    | "smallProductDark"
+    | "mens";
 
   className?: string;
 }
@@ -28,6 +36,8 @@ export function ImageCard({
   buttonText,
   darkOverlay = false,
   price,
+  description,
+  linkText,
   variant = "editorial",
   className,
 }: ImageCardProps) {
@@ -159,6 +169,206 @@ export function ImageCard({
           >
             →
           </button>
+        </>
+      )}
+
+      {variant === "smallProduct" && (
+        <div
+          className="
+      absolute
+      bottom-0
+      left-0
+      right-0
+
+      p-4
+      text-[#2E2435]
+    "
+        >
+          <h3
+            className="
+    mt-2
+    text-[14px]
+    font-semibold
+    text-[#000000]
+  "
+          >
+            {title}
+          </h3>
+
+          {description && (
+            <p
+              className="
+    
+    mt-2
+    text-[12px]
+    text-[#000000]
+  "
+            >
+              {description}
+            </p>
+          )}
+
+          {linkText && (
+            <button
+              className="
+    mt-2
+!text-[14px]
+    font-medium
+    underline
+    underline-offset-4
+    text-[#000000]
+  "
+            >
+              {linkText} →
+            </button>
+          )}
+        </div>
+      )}
+
+      {variant === "smallProductDark" && (
+        <>
+          {/* Dark Overlay */}
+          <div
+            className="
+        absolute
+        inset-0
+
+        bg-gradient-to-t
+        from-black/50
+        via-black/20
+        to-transparent
+      "
+          />
+
+          {/* Content */}
+          <div
+            className="
+        absolute
+        bottom-0
+        left-0
+        right-0
+
+        p-4
+
+        text-white
+      "
+          >
+            <h3
+              className="
+          text-[12px]
+          font-semibold
+          text-white
+        "
+            >
+              {title}
+            </h3>
+
+            {description && (
+              <p
+                className="
+            mt-2
+            text-[10px]
+            leading-relaxed
+            text-white/90
+          "
+              >
+                {description}
+              </p>
+            )}
+
+            {linkText && (
+              <button
+                className="
+            mt-3
+            !text-[12px]
+            font-medium
+
+            text-white
+
+            underline
+            underline-offset-4
+          "
+              >
+                {linkText} →
+              </button>
+            )}
+          </div>
+        </>
+      )}
+
+      {variant === "mens" && (
+        <>
+          <div
+            className="
+        absolute
+        inset-0
+
+        bg-gradient-to-t
+        from-black/65
+        via-black/20
+        to-transparent
+      "
+          />
+
+          <div
+            className="
+        absolute
+       top-8
+left-8
+right-8
+
+        text-white
+      "
+          >
+            {subtitle && (
+              <p
+                className="
+            mb-4
+
+            text-[11px]
+            uppercase
+            tracking-[0.25em]
+
+            text-white/80
+          "
+              >
+                {subtitle}
+              </p>
+            )}
+
+            <h3
+              className="
+          max-w-[220px]
+
+          font-display
+
+          text-[28px]
+          leading-[1.05]
+
+          text-white
+        "
+            >
+              {title}
+            </h3>
+
+            {linkText && (
+              <button
+                className="
+            mt-5
+
+            !text-[13px]
+            font-medium
+
+            text-white
+
+            underline
+            underline-offset-4
+          "
+              >
+                {linkText} →
+              </button>
+            )}
+          </div>
         </>
       )}
     </HeroCard>

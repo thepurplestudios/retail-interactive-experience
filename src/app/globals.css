@@ -1,6 +1,16 @@
 @import "tailwindcss";
 
 :root {
+  --container-max: 1500px;
+  --section-x: 2rem;
+
+  --hero-gap: 8px;
+  --card-radius: 20px;
+
+  --section-spacing: 120px;
+}
+
+:root {
   /* Brand Colors */
   --background: #f5f0fc;
   --surface: #ffffff;

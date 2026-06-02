@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { Search, User, Heart, ShoppingCart } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 export function Navbar() {
@@ -32,52 +32,46 @@ export function Navbar() {
       <div
         ref={navbarRef}
         className="
-          mx-auto w-[90%] max-w-[1300px]
+          mx-auto
 
-          flex items-center justify-between
+          w-[92%]
+          max-w-[1100px]
+
+          px-8
+          py-2.5
+
+          flex
+          items-center
+          justify-between
 
           rounded-full
 
-          px-8 py-2.5
-
-          border border-white/30
-
-          shadow-[0_8px_32px_rgba(91,63,120,0.15)]
-
-          backdrop-blur-xl
+          border
+          border-white/30
 
           bg-[rgba(216,200,240,0.45)]
+          backdrop-blur-xl
+
+          shadow-[0_8px_24px_rgba(0,0,0,0.06)]
         "
       >
         {/* LEFT */}
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col">
           <h1
             className="
               font-display
-              text-4xl
-              font-bold
+              text-[30px]
+              font-semibold
               leading-none
               text-[var(--primary)]
             "
           >
             The PurPle Shop
           </h1>
-
-          <p
-            className="
-    mt-1
-    pl-2
-    text-sm
-    tracking-[0.18em]
-    text-[var(--text-muted)]
-  "
-          >
-            Dreamy. Retro. Y2K Vibes.
-          </p>
         </div>
 
         {/* RIGHT */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-6">
           {/* Search */}
           <div
             onMouseEnter={() => setSearchOpen(true)}
@@ -87,56 +81,92 @@ export function Navbar() {
             className="relative"
           >
             <div
-              className={`flex items-center overflow-hidden transition-all duration-300 ease-out ${searchOpen ? "w-64" : "w-15"}`}
+              className={`
+                flex items-center overflow-hidden
+                transition-all duration-300 ease-out
+                ${searchOpen ? "w-52" : "w-10"}
+              `}
             >
-              <div className="w-16 h-15 flex items-center justify-center shrink-0">
-                <Image
-                  src="/images/icons/search.png"
-                  alt="Search"
-                  width={70}
-                  height={70}
-                />
-              </div>
+              <button
+                className="
+                  h-10
+                  w-10
+
+                  flex
+                  items-center
+                  justify-center
+
+                  shrink-0
+
+                  text-[var(--primary)]
+                "
+              >
+                <Search size={20} strokeWidth={1.75} />
+              </button>
+
               <input
                 type="text"
-                placeholder="Dream & Search..."
+                placeholder="Search..."
                 onFocus={() => {
                   setSearchOpen(true);
                   setSearchPinned(true);
                 }}
-                className={`ml-2 w-full bg-transparent outline-none text-sm placeholder:text-[var(--text-muted)] transition-opacity duration-300 ${searchOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+                className={`
+                  ml-2
+                  w-full
+
+                  bg-transparent
+                  outline-none
+
+                  text-sm
+
+                  placeholder:text-[var(--text-muted)]
+
+                  transition-opacity
+                  duration-300
+
+                  ${
+                    searchOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+                  }
+                `}
               />
             </div>
           </div>
 
           {/* Account */}
-          <button className="w-15 h-15 flex items-center justify-center transition-transform duration-300 hover:scale-110">
-            <Image
-              src="/images/icons/account.png"
-              alt="Account"
-              width={60}
-              height={60}
-            />
+          <button
+            className="
+              text-[var(--primary)]
+              transition-transform
+              duration-300
+              hover:scale-110
+            "
+          >
+            <User size={20} strokeWidth={1.75} />
           </button>
 
           {/* Wishlist */}
-          <button className="w-15 h-15 flex items-center justify-center transition-transform duration-300 hover:scale-110">
-            <Image
-              src="/images/icons/wishlist.png"
-              alt="Wishlist"
-              width={60}
-              height={60}
-            />
+          <button
+            className="
+              text-[var(--primary)]
+              transition-transform
+              duration-300
+              hover:scale-110
+            "
+          >
+            <Heart size={20} strokeWidth={1.75} />
           </button>
 
           {/* Cart */}
-          <button className="w-15 h-15 flex items-center justify-center transition-transform duration-300 hover:scale-110">
-            <Image
-              src="/images/icons/cart.png"
-              alt="Cart"
-              width={60}
-              height={60}
-            />
+          <button
+            className="
+              text-[var(--primary)]
+              transition-transform
+              duration-300
+              hover:scale-110
+            "
+          >
+            <ShoppingCart size={20} strokeWidth={1.75} />
           </button>
         </div>
       </div>

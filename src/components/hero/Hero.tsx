@@ -8,7 +8,7 @@ import { PromiseCard } from "./PromiseCard";
 
 export function Hero() {
   return (
-    <section className="pb-20 pt-32">
+    <section className="pb-15 pt-25">
       <div
         className="
       mx-auto

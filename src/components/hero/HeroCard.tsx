@@ -7,9 +7,10 @@ import { cn } from "@/lib/utils";
 interface HeroCardProps {
   children: ReactNode;
   className?: string;
+  noBackground?: boolean;
 }
 
-export function HeroCard({ children, className }: HeroCardProps) {
+export function HeroCard({ children, className, noBackground }: HeroCardProps) {
   return (
     <motion.div
       whileHover={{
@@ -20,22 +21,22 @@ export function HeroCard({ children, className }: HeroCardProps) {
       }}
       className={cn(
         `
-    relative
-    h-full
-    w-full
+  relative
+  h-full
+  w-full
 
-    overflow-hidden
-    rounded-[20px]
+  overflow-hidden
+  rounded-[20px]
 
+  shadow-[0_8px_30px_rgba(0,0,0,0.08)]
+  `,
+        !noBackground &&
+          `
     bg-white/70
-
     backdrop-blur-md
-
     border
     border-white/50
-
-    shadow-[0_8px_30px_rgba(0,0,0,0.08)]
-    `,
+  `,
         className,
       )}
     >

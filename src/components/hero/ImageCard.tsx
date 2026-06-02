@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import { HeroCard } from "./HeroCard";
+import { ReactNode } from "react";
 
 interface ImageCardProps {
   src: string;
   alt: string;
 
-  title?: string;
+  title?: ReactNode;
   subtitle?: string;
   buttonText?: string;
 
@@ -23,7 +24,9 @@ interface ImageCardProps {
     | "product"
     | "smallProduct"
     | "smallProductDark"
-    | "mens";
+    | "mens"
+    | "horizontalProduct"
+    | "horizontalProductDark";
 
   className?: string;
 }
@@ -368,6 +371,97 @@ right-8
                 {linkText} →
               </button>
             )}
+          </div>
+        </>
+      )}
+
+      {variant === "horizontalProduct" && (
+        <div
+          className="
+      absolute
+      left-5
+      top-5
+      bottom-5
+
+      flex
+      flex-col
+      justify-between
+
+      text-black
+    "
+        >
+          <h3
+            className="
+        max-w-[220px]
+
+        font-display
+        text-[28px]
+        leading-[1]
+      "
+          >
+            {title}
+          </h3>
+
+          <button
+            className="
+        text-[14px]
+        underline
+        underline-offset-4
+      "
+          >
+            {linkText} →
+          </button>
+        </div>
+      )}
+
+      {variant === "horizontalProductDark" && (
+        <>
+          <div
+            className="
+        absolute
+        inset-0
+
+        bg-gradient-to-r
+        from-black/50
+        to-transparent
+      "
+          />
+
+          <div
+            className="
+        absolute
+        left-5
+        top-5
+        bottom-5
+
+        flex
+        flex-col
+        justify-between
+
+        text-white
+      "
+          >
+            <h3
+              className="
+          max-w-[220px]
+
+          font-display
+          text-[28px]
+          leading-[1]
+        "
+            >
+              {title}
+            </h3>
+
+            <button
+              className="
+          text-[14px]
+          underline
+          underline-offset-4
+        "
+            >
+              {linkText} →
+            </button>
           </div>
         </>
       )}

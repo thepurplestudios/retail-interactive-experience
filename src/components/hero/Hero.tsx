@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { ImageCard } from "./ImageCard";
 import { NewsletterCard } from "./NewsletterCard";
 import TextCard from "./TextCard";
@@ -86,7 +88,7 @@ export function Hero() {
           >
             {" "}
             {/* Card 5 */}
-            <div className="ml-[365px] w-[280px] h-[240px] shrink-0 rounded-[20px]">
+            <div className="ml-[355px] w-[280px] h-[240px] shrink-0 rounded-[20px]">
               {" "}
               <ImageCard
                 src="/images/hero/ring.png"
@@ -123,6 +125,69 @@ export function Hero() {
                 title="Bold. Classic. Effortlessly You."
                 linkText="Shop Men's Collection"
                 variant="mens"
+              />
+            </div>
+          </div>
+        </div>
+        {/* ROW 3 */}
+        <div className="-mt-[30px]">
+          <div
+            className="
+      flex
+      items-start
+      justify-center
+      gap-[var(--hero-gap)]
+    "
+          >
+            {/* Card 9 */}
+            <div className="-ml-[10px] w-[400px] h-[200px] shrink-0 rounded-[20px]">
+              <ImageCard
+                src="/images/hero/Men's-Collection-Product-Shot2.png"
+                alt="Bracelet Collection"
+                title={
+                  <>
+                    Stack It.
+                    <br />
+                    Style It.
+                    <br />
+                    Own It.
+                  </>
+                }
+                linkText="Shop Bracelets"
+                variant="horizontalProduct"
+              />
+            </div>
+            {/* Card 10 */}
+            <div className="w-[400px] h-[200px] shrink-0 rounded-[20px]">
+              {" "}
+              <ImageCard
+                src="/images/hero/Charm-Bracelet.png"
+                alt="Charm Collection"
+                title={
+                  <>
+                    Charms That
+                    <br />
+                    Mean More
+                  </>
+                }
+                linkText="Explore Charms"
+                variant="horizontalProductDark"
+              />
+            </div>
+            {/* Card 11 */}
+            <div className="w-[390px] h-[200px] shrink-0 rounded-[20px]">
+              <NewsletterCard className="!bg-transparent !backdrop-blur-none !shadow-none !border-none" />
+            </div>
+            {/* Card 12 */}
+            {/* Card 12 */}
+            <div className="mt-[40px] w-[220px] h-[160px] shrink-0 rounded-[20px] overflow-hidden">
+              {" "}
+              <Image
+                src="/images/hero/Charm-Necklace.png"
+                alt="Heart Necklace"
+                width={180}
+                height={200}
+                className="h-full w-full object-cover object-center"
               />
             </div>
           </div>

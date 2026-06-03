@@ -189,7 +189,12 @@ export function Hero() {
           </div>
         </div>
         {/* ROW 3 */}
-        <div className="-mt-[30px]">
+        <div
+          style={{
+            marginTop: HERO_LAYOUT.offsets.row3Overlap,
+          }}
+        >
+          {" "}
           <div
             className="
       flex
@@ -199,25 +204,43 @@ export function Hero() {
     "
           >
             {/* Card 9 */}
-            <div className="-ml-[10px] w-[400px] h-[200px] shrink-0 rounded-[20px]">
-              <ImageCard
-                src="/images/hero/Men's-Collection-Product-Shot2.png"
-                alt="Bracelet Collection"
-                title={
-                  <>
-                    Stack It.
-                    <br />
-                    Style It.
-                    <br />
-                    Own It.
-                  </>
-                }
-                linkText="Shop Bracelets"
-                variant="horizontalProduct"
-              />
+            <div
+              style={{
+                marginLeft: HERO_LAYOUT.offsets.row3Start,
+              }}
+            >
+              <div
+                className="shrink-0"
+                style={{
+                  width: HERO_CARD_SIZES.lifestyle.width,
+                  height: HERO_CARD_SIZES.lifestyle.height,
+                }}
+              >
+                <ImageCard
+                  src="/images/hero/Men's-Collection-Product-Shot2.png"
+                  alt="Bracelet Collection"
+                  title={
+                    <>
+                      Stack It.
+                      <br />
+                      Style It.
+                      <br />
+                      Own It.
+                    </>
+                  }
+                  linkText="Shop Bracelets"
+                  variant="horizontalProduct"
+                />
+              </div>
             </div>
             {/* Card 10 */}
-            <div className="w-[400px] h-[200px] shrink-0 rounded-[20px]">
+            <div
+              className="shrink-0"
+              style={{
+                width: HERO_CARD_SIZES.charms.width,
+                height: HERO_CARD_SIZES.charms.height,
+              }}
+            >
               {" "}
               <ImageCard
                 src="/images/hero/Charm-Bracelet.png"
@@ -234,12 +257,25 @@ export function Hero() {
               />
             </div>
             {/* Card 11 */}
-            <div className="w-[390px] h-[200px] shrink-0 rounded-[20px]">
+            <div
+              className="shrink-0"
+              style={{
+                width: HERO_CARD_SIZES.newsletter.width,
+                height: HERO_CARD_SIZES.newsletter.height,
+              }}
+            >
               <NewsletterCard className="!bg-transparent !backdrop-blur-none !shadow-none !border-none" />
             </div>
+
             {/* Card 12 */}
-            {/* Card 12 */}
-            <div className="mt-[40px] w-[220px] h-[160px] shrink-0 rounded-[20px] overflow-hidden">
+            <div
+              className="shrink-0 overflow-hidden rounded-[var(--card-radius)]"
+              style={{
+                width: HERO_CARD_SIZES.necklace.width,
+                height: HERO_CARD_SIZES.necklace.height,
+                marginTop: HERO_LAYOUT.offsets.necklaceDrop,
+              }}
+            >
               {" "}
               <Image
                 src="/images/hero/Charm-Necklace.png"

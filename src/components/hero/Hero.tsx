@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { HERO_LAYOUT, HERO_CARD_SIZES } from "./constants";
 
 import { ImageCard } from "./ImageCard";
 import { NewsletterCard } from "./NewsletterCard";
@@ -30,7 +31,14 @@ export function Hero() {
         >
           {" "}
           {/* Card 1 */}
-          <div className="w-[350px] h-[620px] shrink-0">
+          <div
+            className="shrink-0"
+            style={{
+              width: HERO_CARD_SIZES.editorial.width,
+              height: HERO_CARD_SIZES.editorial.height,
+            }}
+          >
+            {" "}
             <ImageCard
               src="/images/hero/Main-Female-Editorial-Shot.png"
               alt="Jewelry Story"
@@ -42,7 +50,13 @@ export function Hero() {
             />
           </div>
           {/* Card 2 */}
-          <div className="w-[450px] h-[370px] shrink-0">
+          <div
+            className="shrink-0"
+            style={{
+              width: HERO_CARD_SIZES.story.width,
+              height: HERO_CARD_SIZES.story.height,
+            }}
+          >
             <TextCard
               eyebrow="HANDMADE WITH LOVE"
               title={
@@ -57,7 +71,13 @@ export function Hero() {
             />
           </div>
           {/* Card 3 */}
-          <div className="w-[260px] h-[370px] shrink-0">
+          <div
+            className="shrink-0"
+            style={{
+              width: HERO_CARD_SIZES.video.width,
+              height: HERO_CARD_SIZES.video.height,
+            }}
+          >
             <VideoCard
               src="/images/hero/Men's-Editorial-Shot.mp4"
               title="Y2K State of Mind"
@@ -65,7 +85,13 @@ export function Hero() {
             />
           </div>
           {/* Card 4 */}
-          <div className="w-[350px] h-[350px] shrink-0">
+          <div
+            className="shrink-0"
+            style={{
+              width: HERO_CARD_SIZES.product.width,
+              height: HERO_CARD_SIZES.product.height,
+            }}
+          >
             <ImageCard
               src="/images/hero/Bracelet.png"
               alt="Bracelet"
@@ -77,7 +103,13 @@ export function Hero() {
           </div>
         </div>
         {/* ROW 2 */}
-        <div className="-mt-[240px]">
+        <div
+          style={{
+            marginTop: HERO_LAYOUT.offsets.row2Overlap,
+            marginLeft: HERO_LAYOUT.offsets.row2Start,
+          }}
+        >
+          {" "}
           <div
             className="
       flex
@@ -88,7 +120,13 @@ export function Hero() {
           >
             {" "}
             {/* Card 5 */}
-            <div className="ml-[355px] w-[280px] h-[240px] shrink-0 rounded-[20px]">
+            <div
+              className="shrink-0"
+              style={{
+                width: HERO_CARD_SIZES.rings.width,
+                height: HERO_CARD_SIZES.rings.height,
+              }}
+            >
               {" "}
               <ImageCard
                 src="/images/hero/ring.png"
@@ -100,11 +138,25 @@ export function Hero() {
               />
             </div>
             {/* Card 6 */}
-            <div className="w-[180px] h-[240px] shrink-0 rounded-[20px]">
+            <div
+              className="shrink-0"
+              style={{
+                width: HERO_CARD_SIZES.promise.width,
+                height: HERO_CARD_SIZES.promise.height,
+              }}
+            >
+              {" "}
               <PromiseCard />
             </div>
             {/* Card 7 */}
-            <div className="w-[240px] h-[240px] shrink-0 rounded-[20px]">
+            <div
+              className="shrink-0"
+              style={{
+                width: HERO_CARD_SIZES.pearl.width,
+                height: HERO_CARD_SIZES.pearl.height,
+              }}
+            >
+              {" "}
               <ImageCard
                 src="/images/hero/Necklace2.png"
                 alt="Traditional Necklace"
@@ -116,7 +168,14 @@ export function Hero() {
               />{" "}
             </div>
             {/* Card 8 */}
-            <div className=" w-[350px] h-[300px] shrink-0 rounded-[20px] -mt-5">
+            <div
+              className="shrink-0"
+              style={{
+                width: HERO_CARD_SIZES.mens.width,
+                height: HERO_CARD_SIZES.mens.height,
+                marginTop: HERO_LAYOUT.offsets.mensLift,
+              }}
+            >
               {" "}
               <ImageCard
                 src="/images/hero/Bracelet-Lifestyle2.png"

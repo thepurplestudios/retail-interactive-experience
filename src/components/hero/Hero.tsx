@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import { HERO_LAYOUT, HERO_CARD_SIZES } from "./constants";
+import { motion } from "framer-motion";
 
+import { heroReveal, rowReveal } from "../motion/variants";
 import { ImageCard } from "./ImageCard";
 import { NewsletterCard } from "./NewsletterCard";
 import TextCard from "./TextCard";
@@ -11,7 +13,13 @@ import { PromiseCard } from "./PromiseCard";
 
 export function Hero() {
   return (
-    <section className="pb-15 pt-25">
+    <motion.section
+      className="pb-15 pt-25"
+      variants={heroReveal}
+      initial="hidden"
+      animate="visible"
+    >
+      {" "}
       <div
         className="
       mx-auto
@@ -21,7 +29,8 @@ export function Hero() {
       >
         {" "}
         {/* ROW 1 */}
-        <div
+        <motion.div
+          variants={rowReveal}
           className="
     flex
     items-start
@@ -101,9 +110,10 @@ export function Hero() {
               variant="product"
             />
           </div>
-        </div>
+        </motion.div>
         {/* ROW 2 */}
-        <div
+        <motion.div
+          variants={rowReveal}
           style={{
             marginTop: HERO_LAYOUT.offsets.row2Overlap,
             marginLeft: HERO_LAYOUT.offsets.row2Start,
@@ -187,9 +197,10 @@ export function Hero() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
         {/* ROW 3 */}
-        <div
+        <motion.div
+          variants={rowReveal}
           style={{
             marginTop: HERO_LAYOUT.offsets.row3Overlap,
           }}
@@ -286,8 +297,8 @@ export function Hero() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

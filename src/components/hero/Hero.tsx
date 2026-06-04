@@ -280,7 +280,13 @@ export function Hero() {
 
             {/* Card 12 */}
             <div
-              className="shrink-0 overflow-hidden rounded-[var(--card-radius)]"
+              className="
+                group
+                relative
+                shrink-0
+                overflow-hidden
+                rounded-[var(--card-radius)]
+              "
               style={{
                 width: HERO_CARD_SIZES.necklace.width,
                 height: HERO_CARD_SIZES.necklace.height,
@@ -295,6 +301,41 @@ export function Hero() {
                 height={200}
                 className="h-full w-full object-cover object-center"
               />
+              <div
+                className="
+    pointer-events-none
+    absolute
+    inset-0
+
+    opacity-0
+
+    transition-opacity
+    duration-300
+
+    group-hover:opacity-100
+  "
+              >
+                <div
+                  className="
+      absolute
+      inset-y-0
+
+      -left-[40%]
+      w-[18%]
+
+      rotate-[14deg]
+
+      bg-white/5
+      blur-md
+
+      group-hover:left-[130%]
+
+      transition-all
+      duration-[1400ms]
+      ease-out
+    "
+                />
+              </div>
             </div>
           </div>
         </motion.div>

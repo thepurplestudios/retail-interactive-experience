@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -12,13 +11,7 @@ interface HeroCardProps {
 
 export function HeroCard({ children, className, noBackground }: HeroCardProps) {
   return (
-    <motion.div
-      whileHover={{
-        y: -6,
-        transition: {
-          duration: 0.25,
-        },
-      }}
+    <div
       className={cn(
         `
   relative
@@ -41,6 +34,6 @@ export function HeroCard({ children, className, noBackground }: HeroCardProps) {
       )}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

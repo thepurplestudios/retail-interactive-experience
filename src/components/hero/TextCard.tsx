@@ -102,11 +102,6 @@ export default function TextCard({
           py-2
 
           text-white
-
-          transition-all
-          duration-300
-
-          hover:scale-105
         "
       >
         {buttonText} →

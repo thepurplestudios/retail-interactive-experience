@@ -53,9 +53,7 @@ export function ImageCard({
         sizes="100vw"
         className="
           object-cover
-          transition-transform
-          duration-700
-          hover:scale-105
+          
         "
       />
 
@@ -124,8 +122,7 @@ export function ImageCard({
           py-3
           text-sm
           backdrop-blur-md
-          transition-all
-          hover:bg-white/10
+         
         "
             >
               {buttonText}

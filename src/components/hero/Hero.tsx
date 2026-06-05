@@ -76,7 +76,7 @@ export function Hero() {
                 </>
               }
               description="Handpicked materials, nostalgic designs, and timeless details crafted for dreamers."
-              buttonText="Shop Now"
+              buttonText="Know More About Us"
             />
           </div>
           {/* Card 3 */}

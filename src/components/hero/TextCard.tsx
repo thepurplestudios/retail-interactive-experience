@@ -1,4 +1,4 @@
-import { Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 
 interface TextCardProps {
   eyebrow: string;
@@ -92,19 +92,34 @@ export default function TextCard({
       {/* CTA */}
       <button
         className="
-          mt-10
+    group/button
 
-          rounded-full
+    mt-10
 
-          bg-[var(--primary)]
+    rounded-full
 
-          px-8
-          py-2
+    bg-[var(--primary)]
 
-          text-white
-        "
+    px-8
+    py-2
+
+    text-white
+  "
       >
-        {buttonText} →
+        <span className="flex items-center gap-2">
+          {buttonText}
+
+          <ArrowRight
+            size={16}
+            className="
+        transition-transform
+        duration-500
+        ease-out
+
+        group-hover/button:translate-x-1
+      "
+          />
+        </span>
       </button>
     </div>
   );

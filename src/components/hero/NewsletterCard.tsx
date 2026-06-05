@@ -76,31 +76,61 @@ export function NewsletterCard({ className }: { className?: string }) {
               type="email"
               placeholder="Enter your email"
               className="
-  h-[40px]
-  flex-1
-  rounded-xl
-  border
-  border-[#DDD5CA]
-  bg-white
-  px-4
-  text-[12px]
-  outline-none
-  placeholder:text-[#9C95A7]
-"
+    h-[40px]
+    flex-1
+
+    rounded-xl
+
+    border
+    border-[#DDD5CA]
+
+    bg-white
+
+    px-4
+
+    text-[12px]
+
+    outline-none
+
+    placeholder:text-[#9C95A7]
+
+    transition-all
+    duration-300
+
+    hover:border-[#B9AEC7]
+
+    focus:border-[#4B3A63]
+    focus:ring-2
+    focus:ring-[#4B3A63]/10
+  "
             />
             <button
               className="
-  flex
-  h-[40px]
-  w-[40px]
-  items-center
-  justify-center
-  rounded-xl
-  bg-[#4B3A63]
-  text-white
-"
+    group/newsletter-arrow
+
+    flex
+    h-[40px]
+    w-[40px]
+
+    items-center
+    justify-center
+
+    rounded-xl
+
+    bg-[#4B3A63]
+    text-white
+  "
             >
-              <ArrowRight size={14} />
+              <ArrowRight
+                size={14}
+                className="
+      transition-transform
+      duration-500
+      ease-out
+
+      group-hover/newsletter-arrow:translate-x-1
+    "
+              />
             </button>
           </div>
         </div>

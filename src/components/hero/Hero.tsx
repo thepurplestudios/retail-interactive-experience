@@ -4,7 +4,7 @@ import Image from "next/image";
 import { HERO_LAYOUT, HERO_CARD_SIZES } from "./constants";
 import { motion } from "framer-motion";
 
-import { heroReveal, rowReveal } from "../motion/variants";
+import { heroReveal, cardReveal } from "../motion/variants";
 import { ImageCard } from "./ImageCard";
 import { NewsletterCard } from "./NewsletterCard";
 import TextCard from "./TextCard";
@@ -29,8 +29,7 @@ export function Hero() {
       >
         {" "}
         {/* ROW 1 */}
-        <motion.div
-          variants={rowReveal}
+        <div
           className="
     flex
     items-start
@@ -40,7 +39,8 @@ export function Hero() {
         >
           {" "}
           {/* Card 1 */}
-          <div
+          <motion.div
+            variants={cardReveal}
             className="shrink-0"
             style={{
               width: HERO_CARD_SIZES.editorial.width,
@@ -57,9 +57,10 @@ export function Hero() {
               buttonText="Explore Collection →"
               variant="editorial"
             />
-          </div>
+          </motion.div>
           {/* Card 2 */}
-          <div
+          <motion.div
+            variants={cardReveal}
             className="shrink-0"
             style={{
               width: HERO_CARD_SIZES.story.width,
@@ -78,9 +79,10 @@ export function Hero() {
               description="Handpicked materials, nostalgic designs, and timeless details crafted for dreamers."
               buttonText="Know More About Us"
             />
-          </div>
+          </motion.div>
           {/* Card 3 */}
-          <div
+          <motion.div
+            variants={cardReveal}
             className="shrink-0"
             style={{
               width: HERO_CARD_SIZES.video.width,
@@ -92,9 +94,10 @@ export function Hero() {
               title="Y2K State of Mind"
               linkText="Watch Film"
             />
-          </div>
+          </motion.div>
           {/* Card 4 */}
-          <div
+          <motion.div
+            variants={cardReveal}
             className="shrink-0"
             style={{
               width: HERO_CARD_SIZES.product.width,
@@ -109,11 +112,10 @@ export function Hero() {
               price="₹799"
               variant="product"
             />
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
         {/* ROW 2 */}
-        <motion.div
-          variants={rowReveal}
+        <div
           style={{
             marginTop: HERO_LAYOUT.offsets.row2Overlap,
             marginLeft: HERO_LAYOUT.offsets.row2Start,
@@ -122,15 +124,16 @@ export function Hero() {
           {" "}
           <div
             className="
-      flex
-      items-start
-      justify-center
-      gap-[var(--hero-gap)]
-    "
+              flex
+              items-start
+              justify-center
+              gap-[var(--hero-gap)]
+            "
           >
             {" "}
             {/* Card 5 */}
-            <div
+            <motion.div
+              variants={cardReveal}
               className="shrink-0"
               style={{
                 width: HERO_CARD_SIZES.rings.width,
@@ -146,9 +149,10 @@ export function Hero() {
                 linkText="Discover"
                 variant="smallProduct"
               />
-            </div>
+            </motion.div>
             {/* Card 6 */}
-            <div
+            <motion.div
+              variants={cardReveal}
               className="shrink-0"
               style={{
                 width: HERO_CARD_SIZES.promise.width,
@@ -157,9 +161,10 @@ export function Hero() {
             >
               {" "}
               <PromiseCard />
-            </div>
+            </motion.div>
             {/* Card 7 */}
-            <div
+            <motion.div
+              variants={cardReveal}
               className="shrink-0"
               style={{
                 width: HERO_CARD_SIZES.pearl.width,
@@ -176,9 +181,10 @@ export function Hero() {
                 linkText="Learn More"
                 variant="smallProductDark"
               />{" "}
-            </div>
+            </motion.div>
             {/* Card 8 */}
-            <div
+            <motion.div
+              variants={cardReveal}
               className="shrink-0"
               style={{
                 width: HERO_CARD_SIZES.mens.width,
@@ -195,12 +201,11 @@ export function Hero() {
                 linkText="Shop Men's Collection"
                 variant="mens"
               />
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
         {/* ROW 3 */}
-        <motion.div
-          variants={rowReveal}
+        <div
           style={{
             marginTop: HERO_LAYOUT.offsets.row3Overlap,
           }}
@@ -220,7 +225,8 @@ export function Hero() {
                 marginLeft: HERO_LAYOUT.offsets.row3Start,
               }}
             >
-              <div
+              <motion.div
+                variants={cardReveal}
                 className="shrink-0"
                 style={{
                   width: HERO_CARD_SIZES.lifestyle.width,
@@ -242,10 +248,11 @@ export function Hero() {
                   linkText="Shop Bracelets"
                   variant="horizontalProduct"
                 />
-              </div>
+              </motion.div>
             </div>
             {/* Card 10 */}
-            <div
+            <motion.div
+              variants={cardReveal}
               className="shrink-0"
               style={{
                 width: HERO_CARD_SIZES.charms.width,
@@ -266,9 +273,10 @@ export function Hero() {
                 linkText="Explore Charms"
                 variant="horizontalProductDark"
               />
-            </div>
+            </motion.div>
             {/* Card 11 */}
-            <div
+            <motion.div
+              variants={cardReveal}
               className="shrink-0"
               style={{
                 width: HERO_CARD_SIZES.newsletter.width,
@@ -276,10 +284,11 @@ export function Hero() {
               }}
             >
               <NewsletterCard className="!bg-transparent !backdrop-blur-none !shadow-none !border-none" />
-            </div>
+            </motion.div>
 
             {/* Card 12 */}
-            <div
+            <motion.div
+              variants={cardReveal}
               className="
                 group
                 relative
@@ -336,9 +345,9 @@ export function Hero() {
     "
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </motion.section>
   );

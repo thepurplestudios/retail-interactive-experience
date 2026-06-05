@@ -1,6 +1,6 @@
-import { ROW_REVEAL } from "./transitions";
+import { CARD_REVEAL } from "./transitions";
 
-export const rowReveal = {
+export const cardReveal = {
   hidden: {
     opacity: 0,
   },
@@ -8,7 +8,7 @@ export const rowReveal = {
   visible: {
     opacity: 1,
 
-    transition: ROW_REVEAL,
+    transition: CARD_REVEAL,
   },
 };
 
@@ -23,4 +23,5 @@ export const heroReveal = {
 };
 
 export const imageCardHover = {};
+
 export const textCardHover = {};

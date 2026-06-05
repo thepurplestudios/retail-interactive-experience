@@ -1,12 +1,7 @@
 export const LUXURY_EASE = [0.16, 1, 0.3, 1] as const;
 
-export const ROW_REVEAL = {
-  duration: 1.6,
-  ease: LUXURY_EASE,
-};
-
-export const HERO_REVEAL = {
-  duration: 1.4,
+export const CARD_REVEAL = {
+  duration: 2,
   ease: LUXURY_EASE,
 };
 

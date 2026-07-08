@@ -16,7 +16,7 @@ export default function DesktopLayout() {
     <>
       {
         <motion.section
-          className="pb-15 pt-25"
+          className="hidden lg:block pb-15 pt-25"
           variants={heroReveal}
           initial="hidden"
           animate="visible"

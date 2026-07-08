@@ -5,33 +5,43 @@ interface TextCardProps {
   title: React.ReactNode;
   description: string;
   buttonText: string;
-}
 
+  size?: "desktop" | "tablet" | "mobile";
+}
 export default function TextCard({
   eyebrow,
   title,
   description,
   buttonText,
+  size = "desktop",
 }: TextCardProps) {
+  const isTablet = size === "tablet";
+
+  const spacing = isTablet ? "px-8 py-8" : "px-12 py-10";
+
+  const heading = isTablet ? "text-[1.7rem]" : "text-[2rem]";
+
+  const descriptionSize = isTablet ? "text-sm" : "text-base";
+
+  const buttonSpacing = isTablet ? "mt-8 px-6 py-2" : "mt-10 px-8 py-2";
   return (
     <div
-      className="
-        h-full
-        rounded-[28px]
+      className={`
+  h-full
+  rounded-[28px]
 
-     bg-[#E8DFD3]
-        border border-white/70
+  bg-[#E8DFD3]
+  border border-white/70
 
-        px-12
-        py-10
+  ${spacing}
 
-        flex
-        flex-col
-        items-center
-        justify-center
+  flex
+  flex-col
+  items-center
+  justify-center
 
-        text-center
-      "
+  text-center
+`}
     >
       {/* sparkle */}
       <Sparkles
@@ -61,50 +71,49 @@ export default function TextCard({
 
       {/* heading */}
       <h2
-        className="
+        className={`
           font-display
           font-bold
 
-          text-[2rem]
+          ${heading}
+
           leading-[0.80]
 
           text-[var(--primary)]
-        "
+        `}
       >
         {title}
       </h2>
 
       {/* description */}
       <p
-        className="
+        className={`
           mt-8
           max-w-[420px]
 
-          text-base
+          ${descriptionSize}
+
           leading-relaxed
 
           text-[var(--text-muted)]
-        "
+        `}
       >
         {description}
       </p>
 
       {/* CTA */}
       <button
-        className="
-    group/button
+        className={`
+          group/button
 
-    mt-10
+          ${buttonSpacing}
 
-    rounded-full
+          rounded-full
 
-    bg-[var(--primary)]
+          bg-[var(--primary)]
 
-    px-8
-    py-2
-
-    text-white
-  "
+          text-white
+        `}
       >
         <span className="flex items-center gap-2">
           {buttonText}

@@ -51,7 +51,7 @@ export function NewsletterCard({ className }: { className?: string }) {
         </svg>
 
         <div
-          className="absolute inset-0 bg-[#F5F1EB]"
+          className="absolute inset-0 bg-[#bebdbd]"
           style={{ clipPath: `url(#${CLIP_ID})` }}
         />
         <div

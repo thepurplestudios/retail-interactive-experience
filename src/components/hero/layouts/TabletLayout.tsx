@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
+import { heroReveal, cardReveal } from "../../motion/variants";
 import { ImageCard } from "../ImageCard";
 import TextCard from "../TextCard";
 import { VideoCard } from "../VideoCard";
@@ -12,7 +14,7 @@ import { TABLET_LAYOUT } from "../data/tablet";
 
 export default function TabletLayout() {
   return (
-    <section
+    <motion.section
       className="
     hidden
     md:block
@@ -20,6 +22,9 @@ export default function TabletLayout() {
     pt-24
     pb-16
   "
+      variants={heroReveal}
+      initial="hidden"
+      animate="visible"
     >
       <div className="mx-auto flex justify-center">
         <div
@@ -31,7 +36,8 @@ export default function TabletLayout() {
         >
           {/* ---------------- Card 1 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: TABLET_LAYOUT.cards.editorial.x,
@@ -49,11 +55,12 @@ export default function TabletLayout() {
               buttonText="Explore Collection →"
               variant="editorial"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 2 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: TABLET_LAYOUT.cards.story.x,
@@ -75,11 +82,12 @@ export default function TabletLayout() {
               buttonText="Know More About Us"
               size="tablet"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 4 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: TABLET_LAYOUT.cards.bracelet.x,
@@ -96,11 +104,12 @@ export default function TabletLayout() {
               price="₹799"
               variant="product"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 5 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: TABLET_LAYOUT.cards.rings.x,
@@ -117,11 +126,12 @@ export default function TabletLayout() {
               linkText="Discover"
               variant="smallProduct"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 6 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: TABLET_LAYOUT.cards.promise.x,
@@ -131,11 +141,12 @@ export default function TabletLayout() {
             }}
           >
             <PromiseCard />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 3 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: TABLET_LAYOUT.cards.video.x,
@@ -149,11 +160,12 @@ export default function TabletLayout() {
               title="Y2K State of Mind"
               linkText="Watch Film"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 7 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: TABLET_LAYOUT.cards.pearl.x,
@@ -171,11 +183,12 @@ export default function TabletLayout() {
               linkText="Learn More"
               variant="smallProductDark"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 8 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: TABLET_LAYOUT.cards.mens.x,
@@ -192,11 +205,12 @@ export default function TabletLayout() {
               linkText="Shop Men's Collection"
               variant="mens"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 11 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: TABLET_LAYOUT.cards.newsletter.x,
@@ -211,12 +225,19 @@ export default function TabletLayout() {
               radiusRatio={0.06} // tighter corner radius than desktop's 0.08
               className="!bg-transparent !backdrop-blur-none !shadow-none !border-none"
             />{" "}
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 12 ---------------- */}
 
-          <div
-            className="absolute"
+          <motion.div
+            variants={cardReveal}
+            className="
+                group
+                relative
+                absolute
+                overflow-hidden
+                rounded-[28px]
+              "
             style={{
               left: TABLET_LAYOUT.cards.necklace.x,
               top: TABLET_LAYOUT.cards.necklace.y,
@@ -224,25 +245,15 @@ export default function TabletLayout() {
               height: TABLET_LAYOUT.cards.necklace.height,
             }}
           >
+            <Image
+              src="/images/hero/Charm-Necklace.png"
+              alt="Heart Necklace"
+              fill
+              className="object-cover object-center"
+            />
+
             <div
               className="
-      group
-      relative
-      h-full
-      w-full
-      overflow-hidden
-      rounded-[28px]
-    "
-            >
-              <Image
-                src="/images/hero/Charm-Necklace.png"
-                alt="Heart Necklace"
-                fill
-                className="object-cover object-center"
-              />
-
-              <div
-                className="
         pointer-events-none
         absolute
         inset-0
@@ -251,9 +262,9 @@ export default function TabletLayout() {
         duration-300
         group-hover:opacity-100
       "
-              >
-                <div
-                  className="
+            >
+              <div
+                className="
           absolute
           inset-y-0
           -left-[40%]
@@ -266,14 +277,14 @@ export default function TabletLayout() {
           ease-out
           group-hover:left-[130%]
         "
-                />
-              </div>
+              />
             </div>
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 9 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: TABLET_LAYOUT.cards.lifestyle.x,
@@ -297,11 +308,12 @@ export default function TabletLayout() {
               linkText="Shop Bracelets"
               variant="horizontalProduct"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 10 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: TABLET_LAYOUT.cards.charms.x,
@@ -323,9 +335,9 @@ export default function TabletLayout() {
               linkText="Explore Charms"
               variant="horizontalProductDark"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

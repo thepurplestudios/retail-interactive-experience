@@ -67,5 +67,26 @@ export const TABLET_LAYOUT = {
       width: 450,
       height: 280,
     },
+
+    necklace: {
+      x: 510,
+      y: 1350,
+      width: 200,
+      height: 200,
+    },
+
+    lifestyle: {
+      x: 40,
+      y: 1570,
+      width: 325,
+      height: 230,
+    },
+
+    charms: {
+      x: 385,
+      y: 1570,
+      width: 325,
+      height: 230,
+    },
   },
 };

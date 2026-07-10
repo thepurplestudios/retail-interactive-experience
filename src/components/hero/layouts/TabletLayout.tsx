@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { ImageCard } from "../ImageCard";
 import TextCard from "../TextCard";
 import { VideoCard } from "../VideoCard";
@@ -209,6 +211,118 @@ export default function TabletLayout() {
               radiusRatio={0.06} // tighter corner radius than desktop's 0.08
               className="!bg-transparent !backdrop-blur-none !shadow-none !border-none"
             />{" "}
+          </div>
+
+          {/* ---------------- Card 12 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: TABLET_LAYOUT.cards.necklace.x,
+              top: TABLET_LAYOUT.cards.necklace.y,
+              width: TABLET_LAYOUT.cards.necklace.width,
+              height: TABLET_LAYOUT.cards.necklace.height,
+            }}
+          >
+            <div
+              className="
+      group
+      relative
+      h-full
+      w-full
+      overflow-hidden
+      rounded-[28px]
+    "
+            >
+              <Image
+                src="/images/hero/Charm-Necklace.png"
+                alt="Heart Necklace"
+                fill
+                className="object-cover object-center"
+              />
+
+              <div
+                className="
+        pointer-events-none
+        absolute
+        inset-0
+        opacity-0
+        transition-opacity
+        duration-300
+        group-hover:opacity-100
+      "
+              >
+                <div
+                  className="
+          absolute
+          inset-y-0
+          -left-[40%]
+          w-[18%]
+          rotate-[14deg]
+          bg-white/5
+          blur-md
+          transition-all
+          duration-[1400ms]
+          ease-out
+          group-hover:left-[130%]
+        "
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* ---------------- Card 9 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: TABLET_LAYOUT.cards.lifestyle.x,
+              top: TABLET_LAYOUT.cards.lifestyle.y,
+              width: TABLET_LAYOUT.cards.lifestyle.width,
+              height: TABLET_LAYOUT.cards.lifestyle.height,
+            }}
+          >
+            <ImageCard
+              src="/images/hero/Men's-Collection-Product-Shot2.png"
+              alt="Bracelet Collection"
+              title={
+                <>
+                  Stack It.
+                  <br />
+                  Style It.
+                  <br />
+                  Own It.
+                </>
+              }
+              linkText="Shop Bracelets"
+              variant="horizontalProduct"
+            />
+          </div>
+
+          {/* ---------------- Card 10 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: TABLET_LAYOUT.cards.charms.x,
+              top: TABLET_LAYOUT.cards.charms.y,
+              width: TABLET_LAYOUT.cards.charms.width,
+              height: TABLET_LAYOUT.cards.charms.height,
+            }}
+          >
+            <ImageCard
+              src="/images/hero/Charm-Bracelet.png"
+              alt="Charm Collection"
+              title={
+                <>
+                  Charms That
+                  <br />
+                  Mean More
+                </>
+              }
+              linkText="Explore Charms"
+              variant="horizontalProductDark"
+            />
           </div>
         </div>
       </div>

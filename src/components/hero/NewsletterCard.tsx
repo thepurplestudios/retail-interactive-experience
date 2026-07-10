@@ -1,139 +1,203 @@
 "use client";
+
+import {
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { Mail, ArrowRight } from "lucide-react";
 import { HeroCard } from "./HeroCard";
+import { createNewsletterClip } from "./NewsletterClip";
 
-const CLIP_ID = "newsletterTabClip";
+interface NewsletterCardProps {
+  className?: string;
+  title?: string;
+  subtitle?: string;
+  placeholder?: string;
+  buttonLabel?: string;
+  icon?: ReactNode;
+  /** Corner radius as a ratio of card width. Default matches desktop. */
+  radiusRatio?: number;
+  /** Notch width as a ratio of card width. Default matches desktop. */
+  notchWidthRatio?: number;
+  /** Notch height (depth) as a ratio of card height. Default matches desktop. */
+  notchHeightRatio?: number;
+}
 
-const W = 250,
-  H = 200,
-  R = 20;
-const NOTCH_W = 90,
-  NOTCH_H = 44;
-const K = 0.5523;
+// Defaults — these are what desktop uses when no overrides are passed.
+const DEFAULT_RADIUS_RATIO = 0.08;
+const DEFAULT_NOTCH_WIDTH_RATIO = 0.36;
+const DEFAULT_NOTCH_HEIGHT_RATIO = 0.22;
 
-const rX = R / W;
-const rY = R / H;
-const nX = (W - NOTCH_W) / W; // notch left edge  ~0.64
-const nY = NOTCH_H / H; // notch bottom     ~0.22
-const nXr = nX + rX; // notch curve end  ~0.72
-const nY0 = nY - rY; // notch curve start ~0.12
+export function NewsletterCard({
+  className,
+  title = "Join the Club",
+  subtitle = "Get early access to new drops and exclusive offers.",
+  placeholder = "Enter your email",
+  buttonLabel = "Subscribe",
+  icon = <Mail size={16} strokeWidth={1.5} />,
+  radiusRatio = DEFAULT_RADIUS_RATIO,
+  notchWidthRatio = DEFAULT_NOTCH_WIDTH_RATIO,
+  notchHeightRatio = DEFAULT_NOTCH_HEIGHT_RATIO,
+}: NewsletterCardProps) {
+  const clipId = useId();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState({ width: 0, height: 0 });
 
-export function NewsletterCard({ className }: { className?: string }) {
-  const d = `
-    M ${rX},0
-    L ${nX - rX},0
-    C ${nX - rX + rX * K},0 ${nX},${rY * (1 - K)} ${nX},${rY}
-    L ${nX},${nY0}
-    C ${nX},${nY0 + rY * K} ${nXr - rX * K},${nY} ${nXr},${nY}
-    L ${1 - rX},${nY}
-    C ${1 - rX * (1 - K)},${nY} 1,${nY + rY * K} 1,${nY + rY}
-    L 1,${1 - rY}
-    C 1,${1 - rY + rY * K} ${1 - rX * (1 - K)},1 ${1 - rX},1
-    L ${rX},1
-    C ${rX * (1 - K)},1 0,${1 - rY * (1 - K)} 0,${1 - rY}
-    L 0,${rY}
-    C 0,${rY * (1 - K)} ${rX * (1 - K)},0 ${rX},0
-    Z
-  `;
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new ResizeObserver(([entry]) => {
+      const { width, height } = entry.contentRect;
+      setSize({ width, height });
+    });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const clipPath = useMemo(() => {
+    if (!size.width || !size.height) return "";
+    return createNewsletterClip({
+      width: size.width,
+      height: size.height,
+      radius: size.width * radiusRatio,
+      notchWidth: size.width * notchWidthRatio,
+      notchHeight: size.height * notchHeightRatio,
+    });
+  }, [size.width, size.height, radiusRatio, notchWidthRatio, notchHeightRatio]);
 
   return (
-    <HeroCard className={className} noBackground>
-      <div className="relative h-full w-full">
+    <HeroCard className={className}>
+      <div
+        ref={containerRef}
+        className="relative h-full w-full"
+        style={
+          {
+            "--newsletter-bg": "#bebdbd",
+            "--newsletter-text": "#2E2435",
+            "--newsletter-text-muted": "#5F576B",
+            "--newsletter-accent": "#4B3A63",
+            "--newsletter-border": "#DDD5CA",
+            "--newsletter-border-hover": "#B9AEC7",
+            "--newsletter-placeholder": "#9C95A7",
+          } as CSSProperties
+        }
+      >
         <svg
-          className="absolute w-0 h-0 overflow-hidden"
+          className="absolute h-0 w-0 overflow-hidden"
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
         >
           <defs>
-            <clipPath id={CLIP_ID} clipPathUnits="objectBoundingBox">
-              <path d={d} />
+            <clipPath id={clipId} clipPathUnits="objectBoundingBox">
+              <path d={clipPath} />
             </clipPath>
           </defs>
         </svg>
 
         <div
-          className="absolute inset-0 bg-[#bebdbd]"
-          style={{ clipPath: `url(#${CLIP_ID})` }}
-        />
-        <div
-          className="absolute inset-0 flex flex-col px-6 pb-5"
+          className="absolute inset-0"
           style={{
-            paddingTop: `${NOTCH_H - 6}px`,
-            clipPath: `url(#${CLIP_ID})`,
+            backgroundColor: "var(--newsletter-bg)",
+            clipPath: clipPath ? `url(#${clipId})` : undefined,
           }}
+        />
+
+        <form
+          className="absolute inset-0 flex flex-col"
+          style={{
+            padding:
+              "clamp(16px, 6%, 28px) clamp(16px, 5%, 24px) clamp(14px, 4.5%, 20px)",
+            clipPath: clipPath ? `url(#${clipId})` : undefined,
+          }}
+          aria-label={title}
+          onSubmit={(e) => e.preventDefault()}
         >
-          <Mail size={16} strokeWidth={1.5} className="text-[#4B3A63]" />
-          <h2 className="mt-3 font-display text-[19px] leading-[1.05] text-[#2E2435]">
-            {" "}
-            Join the Club
+          <span
+            style={{ color: "var(--newsletter-accent)" }}
+            aria-hidden="true"
+          >
+            {icon}
+          </span>
+
+          <h2
+            className="font-display leading-[1.05]"
+            style={{
+              marginTop: "clamp(8px, 3%, 12px)",
+              fontSize: "clamp(15px, 3vw, 19px)",
+              color: "var(--newsletter-text)",
+            }}
+          >
+            {title}
           </h2>
-          <p className="mt-2 text-[11px] leading-[1.5] text-[#5F576B]">
-            {" "}
-            Get early access to new drops and exclusive offers.
+
+          <p
+            className="leading-[1.5]"
+            style={{
+              marginTop: "clamp(6px, 2%, 8px)",
+              fontSize: "clamp(10px, 1.6vw, 11px)",
+              color: "var(--newsletter-text-muted)",
+            }}
+          >
+            {subtitle}
           </p>
+
           <div className="flex-1" />
+
           <div className="flex items-center gap-2">
+            <label className="sr-only" htmlFor={`${clipId}-email`}>
+              Email address
+            </label>
             <input
+              id={`${clipId}-email`}
               type="email"
-              placeholder="Enter your email"
+              required
+              placeholder={placeholder}
               className="
-    h-[40px]
-    flex-1
-
-    rounded-xl
-
-    border
-    border-[#DDD5CA]
-
-    bg-white
-
-    px-4
-
-    text-[12px]
-
-    outline-none
-
-    placeholder:text-[#9C95A7]
-
-    transition-all
-    duration-300
-
-    hover:border-[#B9AEC7]
-
-    focus:border-[#4B3A63]
-    focus:ring-2
-    focus:ring-[#4B3A63]/10
-  "
+                flex-1 rounded-xl border bg-white outline-none
+                transition-all duration-300
+              "
+              style={{
+                height: "clamp(34px, 10%, 40px)",
+                fontSize: "clamp(11px, 1.8vw, 12px)",
+                padding: "0 clamp(10px, 3%, 16px)",
+                borderColor: "var(--newsletter-border)",
+                color: "var(--newsletter-text)",
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = "var(--newsletter-accent)";
+                e.currentTarget.style.boxShadow =
+                  "0 0 0 2px color-mix(in srgb, var(--newsletter-accent) 10%, transparent)";
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = "var(--newsletter-border)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
             />
             <button
-              className="
-    group/newsletter-arrow
-
-    flex
-    h-[40px]
-    w-[40px]
-
-    items-center
-    justify-center
-
-    rounded-xl
-
-    bg-[#4B3A63]
-    text-white
-  "
+              type="submit"
+              title={buttonLabel}
+              aria-label={buttonLabel}
+              className="group/newsletter-arrow flex items-center justify-center rounded-xl text-white"
+              style={{
+                height: "clamp(34px, 10%, 40px)",
+                width: "clamp(34px, 10%, 40px)",
+                backgroundColor: "var(--newsletter-accent)",
+              }}
             >
               <ArrowRight
                 size={14}
-                className="
-      transition-transform
-      duration-500
-      ease-out
-
-      group-hover/newsletter-arrow:translate-x-1
-    "
+                className="transition-transform duration-500 ease-out group-hover/newsletter-arrow:translate-x-1"
               />
             </button>
           </div>
-        </div>
+        </form>
       </div>
     </HeroCard>
   );

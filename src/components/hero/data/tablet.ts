@@ -1,42 +1,71 @@
 export const TABLET_LAYOUT = {
-  container: {
-    maxWidth: 940,
-    paddingX: 32,
-    gap: 24,
-  },
-
-  columns: {
-    left: "42%",
-    right: "58%",
+  canvas: {
+    width: 740,
+    height: 1550,
   },
 
   cards: {
     editorial: {
-      height: 620,
+      x: 40,
+      y: 30,
+      width: 320,
+      height: 560,
     },
 
     story: {
-      height: 290,
+      x: 385,
+      y: 30,
+      width: 320,
+      height: 270,
     },
 
     bracelet: {
-      height: 300,
+      x: 385,
+      y: 320,
+      width: 320,
+      height: 270,
     },
 
     rings: {
-      height: 170,
+      x: 40,
+      y: 615,
+      width: 170,
+      height: 250,
     },
 
     promise: {
-      height: 170,
+      x: 225,
+      y: 615,
+      width: 135,
+      height: 250,
     },
 
     video: {
-      height: 420,
+      x: 385,
+      y: 610,
+      width: 320,
+      height: 400,
+    },
+
+    pearl: {
+      x: 40,
+      y: 890,
+      width: 320,
+      height: 350,
     },
 
     mens: {
-      height: 220,
+      x: 380,
+      y: 1030, // tweak later
+      width: 330,
+      height: 300,
+    },
+
+    newsletter: {
+      x: 40,
+      y: 1265,
+      width: 450,
+      height: 280,
     },
   },
-} as const;
+};

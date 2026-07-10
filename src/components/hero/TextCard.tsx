@@ -17,13 +17,17 @@ export default function TextCard({
 }: TextCardProps) {
   const isTablet = size === "tablet";
 
-  const spacing = isTablet ? "px-8 py-8" : "px-12 py-10";
+  const spacing = isTablet ? "px-6 py-6" : "px-12 py-10";
 
-  const heading = isTablet ? "text-[1.7rem]" : "text-[2rem]";
+  const heading = isTablet ? "text-[1.5rem]" : "text-[2rem]";
 
-  const descriptionSize = isTablet ? "text-sm" : "text-base";
+  const descriptionSize = isTablet
+    ? "text-[13px] leading-5"
+    : "text-base leading-relaxed";
 
-  const buttonSpacing = isTablet ? "mt-8 px-6 py-2" : "mt-10 px-8 py-2";
+  const buttonSpacing = isTablet
+    ? "mt-5 px-4 py-1.5 text-[9px]"
+    : "mt-10 px-8 py-2";
   return (
     <div
       className={`
@@ -45,7 +49,7 @@ export default function TextCard({
     >
       {/* sparkle */}
       <Sparkles
-        size={16}
+        size={isTablet ? 14 : 16}
         className="
           mb-6
           text-[var(--primary)]
@@ -55,16 +59,13 @@ export default function TextCard({
 
       {/* eyebrow */}
       <p
-        className="
-          mb-5
-
-          text-xs
-          tracking-[0.28em]
-
+        className={`
           uppercase
-
+          text-[11px]
+          tracking-[0.22em]
+          ${isTablet ? "mb-3" : "mb-5"}
           text-[var(--text-muted)]
-        "
+        `}
       >
         {eyebrow}
       </p>
@@ -88,13 +89,9 @@ export default function TextCard({
       {/* description */}
       <p
         className={`
-          mt-8
+          ${isTablet ? "mt-5" : "mt-8"}
           max-w-[420px]
-
           ${descriptionSize}
-
-          leading-relaxed
-
           text-[var(--text-muted)]
         `}
       >

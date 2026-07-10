@@ -2,12 +2,14 @@
 
 import DesktopLayout from "./layouts/DesktopLayout";
 import TabletLayout from "./layouts/TabletLayout";
+import MobileLayout from "./layouts/MobileLayout";
 
 export default function Hero() {
   return (
     <>
       <DesktopLayout />
       <TabletLayout />
+      <MobileLayout />
     </>
   );
 }

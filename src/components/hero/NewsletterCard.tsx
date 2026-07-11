@@ -20,18 +20,77 @@ interface NewsletterCardProps {
   placeholder?: string;
   buttonLabel?: string;
   icon?: ReactNode;
-  /** Corner radius as a ratio of card width. Default matches desktop. */
+
+  size?: "desktop" | "tablet" | "mobile";
+
+  /** Corner radius as a ratio of card width. Overrides the size preset if passed. */
   radiusRatio?: number;
-  /** Notch width as a ratio of card width. Default matches desktop. */
+  /** Notch width as a ratio of card width. Overrides the size preset if passed. */
   notchWidthRatio?: number;
-  /** Notch height (depth) as a ratio of card height. Default matches desktop. */
+  /** Notch height (depth) as a ratio of card height. Overrides the size preset if passed. */
   notchHeightRatio?: number;
 }
 
-// Defaults — these are what desktop uses when no overrides are passed.
-const DEFAULT_RADIUS_RATIO = 0.08;
-const DEFAULT_NOTCH_WIDTH_RATIO = 0.36;
-const DEFAULT_NOTCH_HEIGHT_RATIO = 0.22;
+// ─────────────────────────────────────────────────────────
+// Size presets — clamp() ranges + notch geometry per size.
+// Unlike the other cards, values here still flex with the
+// card's own measured width/height via clamp(); size just
+// shifts the min/preferred/max bounds and notch ratios so
+// small cards don't inherit desktop-scale floors.
+// ─────────────────────────────────────────────────────────
+
+const newsletterStyles = {
+  desktop: {
+    radiusRatio: 0.08,
+    notchWidthRatio: 0.36,
+    notchHeightRatio: 0.22,
+    padding:
+      "clamp(16px, 6%, 28px) clamp(16px, 5%, 24px) clamp(14px, 4.5%, 20px)",
+    iconSize: 16,
+    titleMt: "clamp(8px, 3%, 12px)",
+    title: "clamp(15px, 3vw, 19px)",
+    subtitleMt: "clamp(6px, 2%, 8px)",
+    subtitle: "clamp(10px, 1.6vw, 11px)",
+    fieldHeight: "clamp(34px, 10%, 40px)",
+    inputText: "clamp(11px, 1.8vw, 12px)",
+    inputPadX: "0 clamp(10px, 3%, 16px)",
+    arrowSize: 14,
+  },
+
+  tablet: {
+    radiusRatio: 0.07,
+    notchWidthRatio: 0.34,
+    notchHeightRatio: 0.2,
+    padding:
+      "clamp(14px, 5.5%, 22px) clamp(14px, 4.5%, 20px) clamp(12px, 4%, 16px)",
+    iconSize: 14,
+    titleMt: "clamp(6px, 2.5%, 10px)",
+    title: "clamp(13px, 2.6vw, 16px)",
+    subtitleMt: "clamp(5px, 1.8%, 7px)",
+    subtitle: "clamp(9px, 1.4vw, 10px)",
+    fieldHeight: "clamp(30px, 9%, 36px)",
+    inputText: "clamp(10px, 1.6vw, 11px)",
+    inputPadX: "0 clamp(8px, 2.5%, 14px)",
+    arrowSize: 12,
+  },
+
+  mobile: {
+    radiusRatio: 0.06,
+    notchWidthRatio: 0.4,
+    notchHeightRatio: 0.4,
+    padding:
+      "clamp(30px, 5%, 16px) clamp(10px, 4%, 14px) clamp(20px, 3.5%, 12px)",
+    iconSize: 12,
+    titleMt: "clamp(15px, 2%, 6px)",
+    title: "clamp(10px, 3.4vw, 13px)",
+    subtitleMt: "clamp(6px, 1.5%, 5px)",
+    subtitle: "clamp(7.5px, 2vw, 9px)",
+    fieldHeight: "clamp(24px, 8%, 30px)",
+    inputText: "clamp(8.5px, 2.4vw, 10px)",
+    inputPadX: "0 clamp(6px, 2%, 10px)",
+    arrowSize: 10,
+  },
+} as const;
 
 export function NewsletterCard({
   className,
@@ -39,14 +98,18 @@ export function NewsletterCard({
   subtitle = "Get early access to new drops and exclusive offers.",
   placeholder = "Enter your email",
   buttonLabel = "Subscribe",
-  icon = <Mail size={16} strokeWidth={1.5} />,
-  radiusRatio = DEFAULT_RADIUS_RATIO,
-  notchWidthRatio = DEFAULT_NOTCH_WIDTH_RATIO,
-  notchHeightRatio = DEFAULT_NOTCH_HEIGHT_RATIO,
+  icon,
+  size = "desktop",
+  radiusRatio,
+  notchWidthRatio,
+  notchHeightRatio,
 }: NewsletterCardProps) {
+  const ui = newsletterStyles[size];
+  const resolvedIcon = icon ?? <Mail size={ui.iconSize} strokeWidth={1.5} />;
+
   const clipId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState({ width: 0, height: 0 });
+  const [measured, setMeasured] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     const el = containerRef.current;
@@ -54,23 +117,33 @@ export function NewsletterCard({
 
     const observer = new ResizeObserver(([entry]) => {
       const { width, height } = entry.contentRect;
-      setSize({ width, height });
+      setMeasured({ width, height });
     });
 
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
+  const resolvedRadiusRatio = radiusRatio ?? ui.radiusRatio;
+  const resolvedNotchWidthRatio = notchWidthRatio ?? ui.notchWidthRatio;
+  const resolvedNotchHeightRatio = notchHeightRatio ?? ui.notchHeightRatio;
+
   const clipPath = useMemo(() => {
-    if (!size.width || !size.height) return "";
+    if (!measured.width || !measured.height) return "";
     return createNewsletterClip({
-      width: size.width,
-      height: size.height,
-      radius: size.width * radiusRatio,
-      notchWidth: size.width * notchWidthRatio,
-      notchHeight: size.height * notchHeightRatio,
+      width: measured.width,
+      height: measured.height,
+      radius: measured.width * resolvedRadiusRatio,
+      notchWidth: measured.width * resolvedNotchWidthRatio,
+      notchHeight: measured.height * resolvedNotchHeightRatio,
     });
-  }, [size.width, size.height, radiusRatio, notchWidthRatio, notchHeightRatio]);
+  }, [
+    measured.width,
+    measured.height,
+    resolvedRadiusRatio,
+    resolvedNotchWidthRatio,
+    resolvedNotchHeightRatio,
+  ]);
 
   return (
     <HeroCard className={className}>
@@ -112,8 +185,7 @@ export function NewsletterCard({
         <form
           className="absolute inset-0 flex flex-col"
           style={{
-            padding:
-              "clamp(16px, 6%, 28px) clamp(16px, 5%, 24px) clamp(14px, 4.5%, 20px)",
+            padding: ui.padding,
             clipPath: clipPath ? `url(#${clipId})` : undefined,
           }}
           aria-label={title}
@@ -123,14 +195,14 @@ export function NewsletterCard({
             style={{ color: "var(--newsletter-accent)" }}
             aria-hidden="true"
           >
-            {icon}
+            {resolvedIcon}
           </span>
 
           <h2
             className="font-display leading-[1.05]"
             style={{
-              marginTop: "clamp(8px, 3%, 12px)",
-              fontSize: "clamp(15px, 3vw, 19px)",
+              marginTop: ui.titleMt,
+              fontSize: ui.title,
               color: "var(--newsletter-text)",
             }}
           >
@@ -140,8 +212,8 @@ export function NewsletterCard({
           <p
             className="leading-[1.5]"
             style={{
-              marginTop: "clamp(6px, 2%, 8px)",
-              fontSize: "clamp(10px, 1.6vw, 11px)",
+              marginTop: ui.subtitleMt,
+              fontSize: ui.subtitle,
               color: "var(--newsletter-text-muted)",
             }}
           >
@@ -164,9 +236,9 @@ export function NewsletterCard({
                 transition-all duration-300
               "
               style={{
-                height: "clamp(34px, 10%, 40px)",
-                fontSize: "clamp(11px, 1.8vw, 12px)",
-                padding: "0 clamp(10px, 3%, 16px)",
+                height: ui.fieldHeight,
+                fontSize: ui.inputText,
+                padding: ui.inputPadX,
                 borderColor: "var(--newsletter-border)",
                 color: "var(--newsletter-text)",
               }}
@@ -184,15 +256,15 @@ export function NewsletterCard({
               type="submit"
               title={buttonLabel}
               aria-label={buttonLabel}
-              className="group/newsletter-arrow flex items-center justify-center rounded-xl text-white"
+              className="group/newsletter-arrow flex items-center justify-center rounded-xl text-white shrink-0"
               style={{
-                height: "clamp(34px, 10%, 40px)",
-                width: "clamp(34px, 10%, 40px)",
+                height: ui.fieldHeight,
+                width: ui.fieldHeight,
                 backgroundColor: "var(--newsletter-accent)",
               }}
             >
               <ArrowRight
-                size={14}
+                size={ui.arrowSize}
                 className="transition-transform duration-500 ease-out group-hover/newsletter-arrow:translate-x-1"
               />
             </button>

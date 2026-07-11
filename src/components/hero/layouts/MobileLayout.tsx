@@ -215,6 +215,64 @@ export default function MobileLayout() {
               className="!bg-transparent !backdrop-blur-none !shadow-none !border-none"
             />
           </div>
+
+          {/* ---------------- Card 12 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: MOBILE_LAYOUT.cards.necklace.x,
+              top: MOBILE_LAYOUT.cards.necklace.y,
+              width: MOBILE_LAYOUT.cards.necklace.width,
+              height: MOBILE_LAYOUT.cards.necklace.height,
+            }}
+          >
+            <div
+              className="
+      group
+      relative
+      h-full
+      w-full
+      overflow-hidden
+      rounded-[24px]
+    "
+            >
+              <Image
+                src="/images/hero/Charm-Necklace.png"
+                alt="Heart Necklace"
+                fill
+                className="object-cover object-center"
+              />
+
+              <div
+                className="
+        pointer-events-none
+        absolute
+        inset-0
+        opacity-0
+        transition-opacity
+        duration-300
+        group-hover:opacity-100
+      "
+              >
+                <div
+                  className="
+          absolute
+          inset-y-0
+          -left-[40%]
+          w-[18%]
+          rotate-[14deg]
+          bg-white/5
+          blur-md
+          transition-all
+          duration-[1400ms]
+          ease-out
+          group-hover:left-[130%]
+        "
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

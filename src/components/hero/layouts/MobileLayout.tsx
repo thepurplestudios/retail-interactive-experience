@@ -94,6 +94,32 @@ export default function MobileLayout() {
               size="mobile"
             />
           </div>
+
+          {/* ---------------- Card 2 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: MOBILE_LAYOUT.cards.story.x,
+              top: MOBILE_LAYOUT.cards.story.y,
+              width: MOBILE_LAYOUT.cards.story.width,
+              height: MOBILE_LAYOUT.cards.story.height,
+            }}
+          >
+            <TextCard
+              eyebrow="HANDMADE WITH LOVE"
+              title={
+                <>
+                  Jewelry That Tells
+                  <br />
+                  Your Story
+                </>
+              }
+              description="Handpicked materials, nostalgic designs, and timeless details crafted for dreamers."
+              buttonText="Know More About Us"
+              size="mobile"
+            />
+          </div>
         </div>
       </div>
     </section>

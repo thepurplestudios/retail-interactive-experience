@@ -153,6 +153,51 @@ export default function MobileLayout() {
               size="mobile"
             />
           </div>
+
+          {/* ---------------- Card 7 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: MOBILE_LAYOUT.cards.pearl.x,
+              top: MOBILE_LAYOUT.cards.pearl.y,
+              width: MOBILE_LAYOUT.cards.pearl.width,
+              height: MOBILE_LAYOUT.cards.pearl.height,
+            }}
+          >
+            <ImageCard
+              src="/images/hero/Necklace2.png"
+              alt="Traditional Necklace"
+              subtitle="Pearl Collection"
+              title="Timeless Pearl Necklace"
+              description="Elegant pearls crafted for everyday grace."
+              linkText="Learn More"
+              variant="smallProductDark"
+              size="mobile"
+            />
+          </div>
+
+          {/* ---------------- Card 8 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: MOBILE_LAYOUT.cards.mens.x,
+              top: MOBILE_LAYOUT.cards.mens.y,
+              width: MOBILE_LAYOUT.cards.mens.width,
+              height: MOBILE_LAYOUT.cards.mens.height,
+            }}
+          >
+            <ImageCard
+              src="/images/hero/Bracelet-Lifestyle2.png"
+              alt="Men Collection"
+              subtitle="FOR HIM"
+              title="Bold. Classic. Effortlessly You."
+              linkText="Shop Men's Collection"
+              variant="mens"
+              size="mobile"
+            />
+          </div>
         </div>
       </div>
     </section>

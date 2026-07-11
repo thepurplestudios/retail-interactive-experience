@@ -273,6 +273,62 @@ export default function MobileLayout() {
               </div>
             </div>
           </div>
+
+          {/* ---------------- Card 9 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: MOBILE_LAYOUT.cards.lifestyle.x,
+              top: MOBILE_LAYOUT.cards.lifestyle.y,
+              width: MOBILE_LAYOUT.cards.lifestyle.width,
+              height: MOBILE_LAYOUT.cards.lifestyle.height,
+            }}
+          >
+            <ImageCard
+              src="/images/hero/Men's-Collection-Product-Shot2.png"
+              alt="Bracelet Collection"
+              title={
+                <>
+                  Stack It.
+                  <br />
+                  Style It.
+                  <br />
+                  Own It.
+                </>
+              }
+              linkText="Shop Bracelets"
+              variant="horizontalProduct"
+              size="mobile"
+            />
+          </div>
+
+          {/* ---------------- Card 10 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: MOBILE_LAYOUT.cards.charms.x,
+              top: MOBILE_LAYOUT.cards.charms.y,
+              width: MOBILE_LAYOUT.cards.charms.width,
+              height: MOBILE_LAYOUT.cards.charms.height,
+            }}
+          >
+            <ImageCard
+              src="/images/hero/Charm-Bracelet.png"
+              alt="Charm Collection"
+              title={
+                <>
+                  Charms That
+                  <br />
+                  Mean More
+                </>
+              }
+              linkText="Explore Charms"
+              variant="horizontalProductDark"
+              size="mobile"
+            />
+          </div>
         </div>
       </div>
     </section>

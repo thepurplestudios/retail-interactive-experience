@@ -198,6 +198,23 @@ export default function MobileLayout() {
               size="mobile"
             />
           </div>
+
+          {/* ---------------- Card 11 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: MOBILE_LAYOUT.cards.newsletter.x,
+              top: MOBILE_LAYOUT.cards.newsletter.y,
+              width: MOBILE_LAYOUT.cards.newsletter.width,
+              height: MOBILE_LAYOUT.cards.newsletter.height,
+            }}
+          >
+            <NewsletterCard
+              size="mobile"
+              className="!bg-transparent !backdrop-blur-none !shadow-none !border-none"
+            />
+          </div>
         </div>
       </div>
     </section>

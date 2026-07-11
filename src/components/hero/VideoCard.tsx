@@ -10,12 +10,51 @@ interface VideoCardProps {
 
   title?: string;
   linkText?: string;
+
+  size?: "desktop" | "tablet" | "mobile";
 }
 
-export function VideoCard({ src, className, title, linkText }: VideoCardProps) {
+const videoCardStyles = {
+  desktop: {
+    textPos: "bottom-6 left-6",
+    title: "text-[22px]",
+    linkMt: "mt-3",
+    link: "text-sm",
+    arrowSize: 16,
+    gap: "gap-2",
+  },
+
+  tablet: {
+    textPos: "bottom-5 left-5",
+    title: "text-[18px]",
+    linkMt: "mt-2",
+    link: "text-[13px]",
+    arrowSize: 14,
+    gap: "gap-1.5",
+  },
+
+  mobile: {
+    textPos: "bottom-3 left-3",
+    title: "text-[13px] line-clamp-2",
+    linkMt: "mt-1",
+    link: "text-[10px]",
+    arrowSize: 10,
+    gap: "gap-1",
+  },
+} as const;
+
+export function VideoCard({
+  src,
+  className,
+  title,
+  linkText,
+  size = "desktop",
+}: VideoCardProps) {
+  const ui = videoCardStyles[size];
+
   return (
     <HeroCard className={className}>
-      <div className="group relative h-full w-full">
+      <div className="group relative h-full w-full overflow-hidden">
         <video
           autoPlay
           muted
@@ -80,48 +119,38 @@ export function VideoCard({ src, className, title, linkText }: VideoCardProps) {
         />
 
         {/* text */}
-        <div
-          className="
-      absolute
-      bottom-6
-      left-6
-
-      text-white
-    "
-        >
+        <div className={`absolute ${ui.textPos} right-3 text-white`}>
           <h3
-            className="
+            className={`
         font-display
-        text-[22px]
         leading-tight
-      "
+
+        ${ui.title}
+      `}
           >
             {title}
           </h3>
 
           <button
-            className="
+            className={`
     group/video-link
 
-    mt-3
+    ${ui.linkMt}
 
     pb-1
 
-    text-sm
-  "
+    max-w-full
+
+    ${ui.link}
+  `}
           >
-            <span
-              className="
-      flex
-      items-center
-      gap-2
-    "
-            >
-              {linkText}
+            <span className={`flex items-center ${ui.gap}`}>
+              <span className="truncate">{linkText}</span>
 
               <ArrowRight
-                size={16}
+                size={ui.arrowSize}
                 className="
+        shrink-0
         transition-transform
         duration-500
         ease-out

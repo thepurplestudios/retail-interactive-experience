@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
+
+import { heroReveal, cardReveal } from "../../motion/variants";
 
 import { MOBILE_LAYOUT } from "../data/mobile";
 
@@ -12,13 +15,16 @@ import { NewsletterCard } from "../NewsletterCard";
 
 export default function MobileLayout() {
   return (
-    <section
+    <motion.section
       className="
         block
         md:hidden
         pt-20
         pb-16
       "
+      variants={heroReveal}
+      initial="hidden"
+      animate="visible"
     >
       <div className="mx-auto flex justify-center">
         <div
@@ -30,7 +36,8 @@ export default function MobileLayout() {
         >
           {/* ---------------- Card 1 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.editorial.x,
@@ -49,11 +56,12 @@ export default function MobileLayout() {
               variant="editorial"
               size="mobile"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 4 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.bracelet.x,
@@ -71,11 +79,12 @@ export default function MobileLayout() {
               variant="product"
               size="mobile"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 5 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.rings.x,
@@ -93,11 +102,12 @@ export default function MobileLayout() {
               variant="smallProduct"
               size="mobile"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 2 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.story.x,
@@ -119,11 +129,12 @@ export default function MobileLayout() {
               buttonText="Know More About Us"
               size="mobile"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 6 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.promise.x,
@@ -133,11 +144,12 @@ export default function MobileLayout() {
             }}
           >
             <PromiseCard size="mobile" />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 3 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.video.x,
@@ -152,11 +164,12 @@ export default function MobileLayout() {
               linkText="Watch Film"
               size="mobile"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 7 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.pearl.x,
@@ -175,11 +188,12 @@ export default function MobileLayout() {
               variant="smallProductDark"
               size="mobile"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 8 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.mens.x,
@@ -197,11 +211,12 @@ export default function MobileLayout() {
               variant="mens"
               size="mobile"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 11 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.newsletter.x,
@@ -214,11 +229,12 @@ export default function MobileLayout() {
               size="mobile"
               className="!bg-transparent !backdrop-blur-none !shadow-none !border-none"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 12 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.necklace.x,
@@ -272,11 +288,12 @@ export default function MobileLayout() {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 9 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.lifestyle.x,
@@ -301,11 +318,12 @@ export default function MobileLayout() {
               variant="horizontalProduct"
               size="mobile"
             />
-          </div>
+          </motion.div>
 
           {/* ---------------- Card 10 ---------------- */}
 
-          <div
+          <motion.div
+            variants={cardReveal}
             className="absolute"
             style={{
               left: MOBILE_LAYOUT.cards.charms.x,
@@ -328,9 +346,9 @@ export default function MobileLayout() {
               variant="horizontalProductDark"
               size="mobile"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -120,6 +120,39 @@ export default function MobileLayout() {
               size="mobile"
             />
           </div>
+
+          {/* ---------------- Card 6 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: MOBILE_LAYOUT.cards.promise.x,
+              top: MOBILE_LAYOUT.cards.promise.y,
+              width: MOBILE_LAYOUT.cards.promise.width,
+              height: MOBILE_LAYOUT.cards.promise.height,
+            }}
+          >
+            <PromiseCard size="mobile" />
+          </div>
+
+          {/* ---------------- Card 3 ---------------- */}
+
+          <div
+            className="absolute"
+            style={{
+              left: MOBILE_LAYOUT.cards.video.x,
+              top: MOBILE_LAYOUT.cards.video.y,
+              width: MOBILE_LAYOUT.cards.video.width,
+              height: MOBILE_LAYOUT.cards.video.height,
+            }}
+          >
+            <VideoCard
+              src="/images/hero/Men's-Editorial-Shot.mp4"
+              title="Y2K State of Mind"
+              linkText="Watch Film"
+              size="mobile"
+            />
+          </div>
         </div>
       </div>
     </section>

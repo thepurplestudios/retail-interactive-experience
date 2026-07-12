@@ -43,13 +43,13 @@ const newsletterStyles = {
   desktop: {
     radiusRatio: 0.06,
     notchWidthRatio: 0.34,
-    notchHeightRatio: 0.25,
+    notchHeightRatio: 0.2,
     padding:
-      "clamp(16px, 6%, 28px) clamp(16px, 5%, 24px) clamp(14px, 4.5%, 20px)",
-    iconSize: 16,
-    titleMt: "clamp(8px, 3%, 12px)",
+      "clamp(21px, 6%, 28px) clamp(16px, 5%, 24px) clamp(30px, 4.5%, 20px)",
+    iconSize: 18,
+    titleMt: "clamp(25px, 3%, 12px)",
     title: "clamp(15px, 3vw, 19px)",
-    subtitleMt: "clamp(6px, 2%, 8px)",
+    subtitleMt: "clamp(12px, 2%, 8px)",
     subtitle: "clamp(10px, 1.6vw, 11px)",
     fieldHeight: "clamp(34px, 10%, 40px)",
     inputText: "clamp(11px, 1.8vw, 12px)",

@@ -51,7 +51,7 @@ const imageCardStyles = {
       titleMaxW: "max-w-[220px]",
       title: "text-4xl",
       buttonMt: "mt-6",
-      button: "px-5 py-3 text-sm",
+      button: "px-5 py-3 text-sm rounded-md whitespace-nowrap",
       arrowSize: 16,
     },
     tablet: {
@@ -61,7 +61,7 @@ const imageCardStyles = {
       titleMaxW: "max-w-[190px]",
       title: "text-3xl",
       buttonMt: "mt-5",
-      button: "px-4.5 py-2.5 text-xs",
+      button: "px-4.5 py-2.5 text-xs rounded-md whitespace-nowrap",
       arrowSize: 16,
     },
     mobile: {

@@ -1,91 +1,90 @@
 export const TABLET_LAYOUT = {
   canvas: {
     width: 740,
-    height: 1550,
   },
 
   cards: {
     editorial: {
-      x: 40,
+      x: 20,
       y: 30,
-      width: 320,
-      height: 560,
+      width: 340,
+      height: 550,
     },
 
     story: {
-      x: 385,
+      x: 380,
       y: 30,
-      width: 320,
+      width: 340,
       height: 270,
     },
 
     bracelet: {
-      x: 385,
-      y: 320,
-      width: 320,
+      x: 380,
+      y: 315,
+      width: 340,
       height: 270,
     },
 
     rings: {
-      x: 40,
-      y: 615,
-      width: 170,
-      height: 250,
+      x: 20,
+      y: 600,
+      width: 160,
+      height: 200,
     },
 
     promise: {
-      x: 225,
-      y: 615,
-      width: 135,
-      height: 250,
+      x: 200,
+      y: 600,
+      width: 160,
+      height: 200,
     },
 
     video: {
-      x: 385,
-      y: 610,
-      width: 320,
-      height: 400,
+      x: 380,
+      y: 600,
+      width: 340,
+      height: 440,
     },
 
     pearl: {
-      x: 40,
-      y: 890,
-      width: 320,
-      height: 350,
+      x: 20,
+      y: 820,
+      width: 340,
+      height: 390,
     },
 
     mens: {
       x: 380,
-      y: 1030, // tweak later
-      width: 330,
-      height: 300,
-    },
-
-    newsletter: {
-      x: 40,
-      y: 1265,
-      width: 450,
+      y: 1055, // tweak later
+      width: 340,
       height: 280,
     },
 
+    newsletter: {
+      x: 20,
+      y: 1230,
+      width: 450,
+      height: 260,
+    },
+
     necklace: {
-      x: 510,
-      y: 1350,
-      width: 200,
-      height: 200,
+      x: 490,
+      y: 1360,
+      width: 230,
+      height: 130,
     },
 
     lifestyle: {
-      x: 40,
-      y: 1570,
-      width: 325,
+      x: 20,
+      y: 1510,
+      width: 340,
       height: 230,
     },
 
     charms: {
-      x: 385,
-      y: 1570,
-      width: 325,
+      x: 380,
+      y: 1510,
+      width: 340,
       height: 230,
     },
   },

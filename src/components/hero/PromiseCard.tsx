@@ -22,18 +22,18 @@ const promiseCardStyles = {
     itemGap: "gap-3",
     iconSize: 18,
     label: "text-[13px]",
-    align: "items-start text-left",
+    align: "items-center text-center",
   },
 
   tablet: {
     wrapper: "px-4 py-5",
-    heading: "text-[14px]",
-    listMt: "mt-5",
-    listGap: "space-y-4",
+    heading: "text-[16px]",
+    listMt: "mt-8",
+    listGap: "space-y-3",
     itemGap: "gap-2.5",
     iconSize: 15,
     label: "text-[12px]",
-    align: "items-start text-left",
+    align: "items-center text-center",
   },
 
   mobile: {

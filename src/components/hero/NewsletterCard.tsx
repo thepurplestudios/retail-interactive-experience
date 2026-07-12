@@ -41,9 +41,9 @@ interface NewsletterCardProps {
 
 const newsletterStyles = {
   desktop: {
-    radiusRatio: 0.08,
-    notchWidthRatio: 0.36,
-    notchHeightRatio: 0.22,
+    radiusRatio: 0.06,
+    notchWidthRatio: 0.34,
+    notchHeightRatio: 0.25,
     padding:
       "clamp(16px, 6%, 28px) clamp(16px, 5%, 24px) clamp(14px, 4.5%, 20px)",
     iconSize: 16,
@@ -59,19 +59,19 @@ const newsletterStyles = {
 
   tablet: {
     radiusRatio: 0.07,
-    notchWidthRatio: 0.34,
-    notchHeightRatio: 0.2,
+    notchWidthRatio: 0.25,
+    notchHeightRatio: 0.5,
     padding:
-      "clamp(14px, 5.5%, 22px) clamp(14px, 4.5%, 20px) clamp(12px, 4%, 16px)",
-    iconSize: 14,
-    titleMt: "clamp(6px, 2.5%, 10px)",
-    title: "clamp(13px, 2.6vw, 16px)",
-    subtitleMt: "clamp(5px, 1.8%, 7px)",
-    subtitle: "clamp(9px, 1.4vw, 10px)",
-    fieldHeight: "clamp(30px, 9%, 36px)",
-    inputText: "clamp(10px, 1.6vw, 11px)",
-    inputPadX: "0 clamp(8px, 2.5%, 14px)",
-    arrowSize: 12,
+      "clamp(50px, 5%, 18px) clamp(15px, 4%, 20px) clamp(30px, 3.5%, 14px)",
+    iconSize: 26,
+    titleMt: "clamp(40px, 2%, 6px)",
+    title: "clamp(26px, 2.2vw, 14px)",
+    subtitleMt: "clamp(15px, 1.5%, 5px)",
+    subtitle: "clamp(16px, 1.3vw, 9.5px)",
+    fieldHeight: "clamp(30px, 8%, 32px)",
+    inputText: "clamp(9px, 1.4vw, 10px)",
+    inputPadX: "0 clamp(8px, 2%, 12px)",
+    arrowSize: 11,
   },
 
   mobile: {

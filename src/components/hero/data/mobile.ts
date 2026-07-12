@@ -1,7 +1,6 @@
 export const MOBILE_LAYOUT = {
   canvas: {
     width: 390,
-    height: 2500,
   },
 
   cards: {

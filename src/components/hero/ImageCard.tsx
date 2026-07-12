@@ -170,7 +170,7 @@ const imageCardStyles = {
       subtitle: "text-[10px] tracking-[0.2em]",
       titleMaxW: "max-w-[190px]",
       title: "text-[24px]",
-      linkMt: "mt-1.5",
+      linkMt: "mt-5",
       link: "text-[13px]",
       arrowSize: 14,
     },

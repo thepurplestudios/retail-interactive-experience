@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+import { getCanvasHeight } from "../data/getCanvasHeight";
+
 import { heroReveal, cardReveal } from "../../motion/variants";
 import { ImageCard } from "../ImageCard";
 import TextCard from "../TextCard";
@@ -13,6 +15,7 @@ import { NewsletterCard } from "../NewsletterCard";
 import { TABLET_LAYOUT } from "../data/tablet";
 
 export default function TabletLayout() {
+  const canvasHeight = getCanvasHeight(TABLET_LAYOUT.cards);
   return (
     <motion.section
       className="
@@ -31,7 +34,7 @@ export default function TabletLayout() {
           className="relative"
           style={{
             width: TABLET_LAYOUT.canvas.width,
-            height: TABLET_LAYOUT.canvas.height,
+            height: canvasHeight,
           }}
         >
           {/* ---------------- Card 1 ---------------- */}
@@ -54,6 +57,7 @@ export default function TabletLayout() {
               title="Timeless Pieces For Every You"
               buttonText="Explore Collection →"
               variant="editorial"
+              size="tablet"
             />
           </motion.div>
 
@@ -103,6 +107,7 @@ export default function TabletLayout() {
               title="Starry Charm Bracelet"
               price="₹799"
               variant="product"
+              size="tablet"
             />
           </motion.div>
 
@@ -125,6 +130,7 @@ export default function TabletLayout() {
               description="Understated. Iconic."
               linkText="Discover"
               variant="smallProduct"
+              size="tablet"
             />
           </motion.div>
 
@@ -140,7 +146,7 @@ export default function TabletLayout() {
               height: TABLET_LAYOUT.cards.promise.height,
             }}
           >
-            <PromiseCard />
+            <PromiseCard size="tablet" />
           </motion.div>
 
           {/* ---------------- Card 3 ---------------- */}
@@ -159,6 +165,7 @@ export default function TabletLayout() {
               src="/images/hero/Men's-Editorial-Shot.mp4"
               title="Y2K State of Mind"
               linkText="Watch Film"
+              size="tablet"
             />
           </motion.div>
 
@@ -182,6 +189,7 @@ export default function TabletLayout() {
               description="Elegant pearls crafted for everyday grace."
               linkText="Learn More"
               variant="smallProductDark"
+              size="tablet"
             />
           </motion.div>
 
@@ -204,6 +212,7 @@ export default function TabletLayout() {
               title="Bold. Classic. Effortlessly You."
               linkText="Shop Men's Collection"
               variant="mens"
+              size="tablet"
             />
           </motion.div>
 
@@ -220,11 +229,9 @@ export default function TabletLayout() {
             }}
           >
             <NewsletterCard
-              notchWidthRatio={0.3} // smaller notch than desktop's 0.36
-              notchHeightRatio={0.3} // shallower than desktop's 0.22
-              radiusRatio={0.06} // tighter corner radius than desktop's 0.08
+              size="tablet"
               className="!bg-transparent !backdrop-blur-none !shadow-none !border-none"
-            />{" "}
+            />
           </motion.div>
 
           {/* ---------------- Card 12 ---------------- */}
@@ -307,6 +314,7 @@ export default function TabletLayout() {
               }
               linkText="Shop Bracelets"
               variant="horizontalProduct"
+              size="tablet"
             />
           </motion.div>
 
@@ -334,6 +342,7 @@ export default function TabletLayout() {
               }
               linkText="Explore Charms"
               variant="horizontalProductDark"
+              size="tablet"
             />
           </motion.div>
         </div>

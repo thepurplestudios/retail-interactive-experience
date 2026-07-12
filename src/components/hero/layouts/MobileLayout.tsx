@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+import { getCanvasHeight } from "../data/getCanvasHeight";
+
 import { heroReveal, cardReveal } from "../../motion/variants";
 
 import { MOBILE_LAYOUT } from "../data/mobile";
@@ -14,6 +16,7 @@ import { PromiseCard } from "../PromiseCard";
 import { NewsletterCard } from "../NewsletterCard";
 
 export default function MobileLayout() {
+  const canvasHeight = getCanvasHeight(MOBILE_LAYOUT.cards);
   return (
     <motion.section
       className="
@@ -31,7 +34,7 @@ export default function MobileLayout() {
           className="relative"
           style={{
             width: MOBILE_LAYOUT.canvas.width,
-            height: MOBILE_LAYOUT.canvas.height,
+            height: canvasHeight,
           }}
         >
           {/* ---------------- Card 1 ---------------- */}

@@ -16,12 +16,12 @@ export default function DesktopLayout() {
     DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth +
     DESKTOP_CATEGORY_LAYOUT.carousel.gap;
 
-  const CENTER_OFFSET =
-    (DESKTOP_CATEGORY_LAYOUT.section.maxWidth -
-      DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth) /
-    2;
+  const VIEWPORT_WIDTH = DESKTOP_CATEGORY_LAYOUT.section.maxWidth;
 
-  const translateX = CENTER_OFFSET - activeIndex * CARD_SPACE;
+  const translateX =
+    -(activeIndex * CARD_SPACE) +
+    (VIEWPORT_WIDTH - DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth) / 2;
+
   return (
     <section
       className="
@@ -93,10 +93,11 @@ export default function DesktopLayout() {
           >
             <ChevronLeft size={22} />
           </button>
-          <div className="flex justify-center">
+          <div className="w-full overflow-hidden">
+            {" "}
             {/* Card */}
             <motion.div
-              className="flex items-center"
+              className="flex items-center will-change-transform"
               style={{
                 gap: DESKTOP_CATEGORY_LAYOUT.carousel.gap,
               }}
@@ -110,32 +111,50 @@ export default function DesktopLayout() {
                 mass: 0.9,
               }}
             >
-              {CATEGORIES.map((category, index) => (
-                <div
-                  key={category.id}
-                  className={`
-                    shrink-0
-                    transition-all
-                    duration-500
-                    ${
-                      index === activeIndex
-                        ? "scale-100 opacity-100 z-10"
-                        : "scale-[0.88] opacity-50"
-                    }
-                    `}
-                  style={{
-                    width: DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth,
-                    height: DESKTOP_CATEGORY_LAYOUT.carousel.cardHeight,
-                  }}
-                >
-                  <CategoryCard
-                    title={category.title}
-                    productCount={category.productCount}
-                    image=""
-                    href={category.href}
-                  />
-                </div>
-              ))}
+              {CATEGORIES.map((category, index) => {
+                const distance = Math.abs(index - activeIndex);
+
+                const scale = distance === 0 ? 1 : distance === 1 ? 0.92 : 0.84;
+
+                const opacity =
+                  distance === 0 ? 1 : distance === 1 ? 0.65 : 0.3;
+
+                const zIndex = distance === 0 ? 30 : distance === 1 ? 20 : 10;
+
+                return (
+                  <motion.div
+                    key={category.id}
+                    className="shrink-0"
+                    style={{
+                      width: DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth,
+                      height: DESKTOP_CATEGORY_LAYOUT.carousel.cardHeight,
+                      zIndex,
+                    }}
+                    animate={{
+                      scale,
+                      opacity,
+                      y: distance === 0 ? -8 : 0,
+                      boxShadow:
+                        distance === 0
+                          ? "0px 30px 80px rgba(0,0,0,0.18)"
+                          : "0px 10px 30px rgba(0,0,0,0.08)",
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 180,
+                      damping: 24,
+                      mass: 0.9,
+                    }}
+                  >
+                    <CategoryCard
+                      title={category.title}
+                      productCount={category.productCount}
+                      image=""
+                      href={category.href}
+                    />
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </div>
           {/* Right */}

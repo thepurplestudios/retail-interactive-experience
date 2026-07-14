@@ -8,6 +8,12 @@ interface CategoryCardProps {
   title: string;
   image?: string;
   productCount: number;
+
+  editorial: {
+    category: string;
+    audience: string;
+  };
+
   href?: string;
   size?: "desktop" | "tablet" | "mobile";
 }
@@ -16,6 +22,7 @@ export default function CategoryCard({
   title,
   image,
   productCount,
+  editorial,
   href = "#",
 }: CategoryCardProps) {
   return (
@@ -68,6 +75,66 @@ export default function CategoryCard({
         "
       />
 
+      {/* Editorial Hover */}
+      <div
+        className="
+    pointer-events-none
+
+    absolute
+    left-8
+    top-1/2
+    -translate-y-1/2
+
+    text-white
+
+    opacity-0
+    -translate-x-6
+
+    transition-all
+    duration-500
+    ease-out
+
+    group-hover:translate-x-0
+    group-hover:opacity-100
+  "
+      >
+        <div className="ml-1.5">
+          <p
+            className="
+            text-xs
+            font-medium
+            tracking-[0.35em]
+            uppercase
+            text-white/90
+            "
+          >
+            {editorial.category}
+          </p>
+
+          <p
+            className="
+            mt-2
+            text-lg
+            tracking-[0.35em]
+            uppercase
+            text-white/80
+            "
+          >
+            FOR
+          </p>
+        </div>
+
+        <h2
+          className="
+            font-display
+            text-6xl
+            leading-none
+            "
+        >
+          {editorial.audience}
+        </h2>
+      </div>
+
       {/* Content */}
       <div
         className="
@@ -88,15 +155,14 @@ export default function CategoryCard({
               font-display
               text-[32px]
               leading-none
-              transition-transform
-              duration-500
-              group-hover:-translate-y-1
+              
             "
           >
             {title}
           </h3>
-
-          <p className="mt-2 text-sm text-white/80">{productCount}</p>
+          <p className="mt-2 text-sm text-white/80">
+            {productCount} Pieces
+          </p>{" "}
         </div>
 
         <ArrowRight

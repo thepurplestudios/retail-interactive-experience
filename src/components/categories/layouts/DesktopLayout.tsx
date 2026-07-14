@@ -127,9 +127,9 @@ export default function DesktopLayout() {
                   <motion.div
                     key={category.id}
                     className={`
-  shrink-0 rounded-[32px]
-  ${distance === 0 ? "shadow-2xl" : "shadow-lg"}
-`}
+                    shrink-0 rounded-[32px]
+                    ${distance === 0 ? "shadow-2xl" : "shadow-lg"}
+                    `}
                     style={{
                       width: DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth,
                       height: DESKTOP_CATEGORY_LAYOUT.carousel.cardHeight,
@@ -151,6 +151,7 @@ export default function DesktopLayout() {
                       title={category.title}
                       productCount={category.productCount}
                       image={category.image}
+                      editorial={category.editorial}
                       href={category.href}
                     />
                   </motion.div>

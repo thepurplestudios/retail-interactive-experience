@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import CategoryCard from "../CategoryCard";
@@ -7,6 +9,7 @@ import { CATEGORIES } from "../data/categories";
 import { DESKTOP_CATEGORY_LAYOUT } from "../data/desktop";
 
 export default function DesktopLayout() {
+  const [activeIndex, setActiveIndex] = useState(2);
   return (
     <section
       className="
@@ -40,10 +43,23 @@ export default function DesktopLayout() {
 
         {/* Carousel */}
 
-        <div className="relative flex items-center justify-center">
+        <div
+          className="
+            relative
+            overflow-hidden
+            flex
+            items-center
+            justify-center
+        "
+        >
+          {" "}
           {/* Left */}
-
           <button
+            onClick={() =>
+              setActiveIndex((prev) =>
+                prev === 0 ? CATEGORIES.length - 1 : prev - 1,
+              )
+            }
             className="
               absolute
               left-10
@@ -65,25 +81,45 @@ export default function DesktopLayout() {
           >
             <ChevronLeft size={22} />
           </button>
-
-          {/* Card */}
-
-          <div
-            style={{
-              width: DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth,
-              height: DESKTOP_CATEGORY_LAYOUT.carousel.cardHeight,
-            }}
-          >
-            <CategoryCard
-              title={CATEGORIES[0].title}
-              productCount={CATEGORIES[0].productCount}
-              image=""
-            />
+          <div className="flex justify-center">
+            {/* Card */}
+            <div
+              className="flex items-center"
+              style={{
+                gap: DESKTOP_CATEGORY_LAYOUT.carousel.gap,
+              }}
+            >
+              {CATEGORIES.map((category, index) => (
+                <div
+                  key={category.id}
+                  className={`
+                    shrink-0
+                    transition-all
+                    duration-500
+                    ${index === activeIndex ? "scale-100 opacity-100" : "scale-90 opacity-60"}
+                    `}
+                  style={{
+                    width: DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth,
+                    height: DESKTOP_CATEGORY_LAYOUT.carousel.cardHeight,
+                  }}
+                >
+                  <CategoryCard
+                    title={category.title}
+                    productCount={category.productCount}
+                    image=""
+                    href={category.href}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-
           {/* Right */}
-
           <button
+            onClick={() =>
+              setActiveIndex((prev) =>
+                prev === CATEGORIES.length - 1 ? 0 : prev + 1,
+              )
+            }
             className="
               absolute
               right-10

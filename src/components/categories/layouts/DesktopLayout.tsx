@@ -22,6 +22,12 @@ export default function DesktopLayout() {
     -(activeIndex * CARD_SPACE) +
     (VIEWPORT_WIDTH - DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth) / 2;
 
+  const wrapIndex = (index: number) => {
+    if (index < 0) return CATEGORIES.length - 1;
+    if (index >= CATEGORIES.length) return 0;
+    return index;
+  };
+
   return (
     <section
       className="
@@ -57,21 +63,17 @@ export default function DesktopLayout() {
 
         <div
           className="
-            relative
-            overflow-hidden
-            flex
-            items-center
-            justify-center
-        "
+    relative
+    flex
+    items-center
+    justify-center
+    py-8
+  "
         >
           {" "}
           {/* Left */}
           <button
-            onClick={() =>
-              setActiveIndex((prev) =>
-                prev === 0 ? CATEGORIES.length - 1 : prev - 1,
-              )
-            }
+            onClick={() => setActiveIndex((prev) => wrapIndex(prev - 1))}
             className="
               absolute
               left-10
@@ -124,7 +126,10 @@ export default function DesktopLayout() {
                 return (
                   <motion.div
                     key={category.id}
-                    className="shrink-0"
+                    className={`
+  shrink-0 rounded-[32px]
+  ${distance === 0 ? "shadow-2xl" : "shadow-lg"}
+`}
                     style={{
                       width: DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth,
                       height: DESKTOP_CATEGORY_LAYOUT.carousel.cardHeight,
@@ -133,11 +138,7 @@ export default function DesktopLayout() {
                     animate={{
                       scale,
                       opacity,
-                      y: distance === 0 ? -8 : 0,
-                      boxShadow:
-                        distance === 0
-                          ? "0px 30px 80px rgba(0,0,0,0.18)"
-                          : "0px 10px 30px rgba(0,0,0,0.08)",
+                      y: 0,
                     }}
                     transition={{
                       type: "spring",
@@ -149,7 +150,7 @@ export default function DesktopLayout() {
                     <CategoryCard
                       title={category.title}
                       productCount={category.productCount}
-                      image=""
+                      image={category.image}
                       href={category.href}
                     />
                   </motion.div>
@@ -159,11 +160,7 @@ export default function DesktopLayout() {
           </div>
           {/* Right */}
           <button
-            onClick={() =>
-              setActiveIndex((prev) =>
-                prev === CATEGORIES.length - 1 ? 0 : prev + 1,
-              )
-            }
+            onClick={() => setActiveIndex((prev) => wrapIndex(prev + 1))}
             className="
               absolute
               right-10

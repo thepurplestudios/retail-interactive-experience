@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 interface CategoryCardProps {
   title: string;
   image?: string;
-  productCount: string;
+  productCount: number;
   href?: string;
   size?: "desktop" | "tablet" | "mobile";
 }
@@ -37,19 +37,21 @@ export default function CategoryCard({
       "
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-[#D8C8F0]">
+      <div className="absolute inset-0 overflow-hidden rounded-[32px] bg-[#D8C8F0]">
+        {" "}
         {image && (
           <Image
             src={image}
             alt={title}
             fill
             className="
-              object-cover
-              transition-transform
-              duration-700
-              ease-out
-              group-hover:scale-105
-            "
+    rounded-[32px]
+    object-cover
+    transition-transform
+    duration-700
+    ease-out
+    group-hover:scale-105
+  "
           />
         )}
       </div>

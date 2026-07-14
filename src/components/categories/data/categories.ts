@@ -1,57 +1,44 @@
-export interface Category {
-  id: string;
-  title: string;
-  image: string;
-  productCount: string;
-  href: string;
-}
-
-export const CATEGORIES: Category[] = [
+export const CATEGORIES = [
   {
-    id: "necklaces",
+    id: 1,
     title: "Necklaces",
-    image: "/images/categories/necklaces.jpg",
-    productCount: "42 Products",
+    productCount: 42,
+    image: "/images/categories/Necklace.png",
     href: "/collections/necklaces",
   },
-
   {
-    id: "bracelets",
+    id: 2,
     title: "Bracelets",
-    image: "/images/categories/bracelets.jpg",
-    productCount: "28 Products",
+    productCount: 28,
+    image: "/images/categories/Bracelet.png",
     href: "/collections/bracelets",
   },
-
   {
-    id: "rings",
+    id: 3,
     title: "Rings",
-    image: "/images/categories/rings.jpg",
-    productCount: "36 Products",
+    productCount: 36,
+    image: "/images/categories/Rings.png",
     href: "/collections/rings",
   },
-
   {
-    id: "earrings",
+    id: 4,
     title: "Earrings",
-    image: "/images/categories/earrings.jpg",
-    productCount: "31 Products",
+    productCount: 31,
+    image: "/images/categories/Women-Eranings.png",
     href: "/collections/earrings",
   },
-
   {
-    id: "Charms",
-    title: "Charms",
-    image: "/images/categories/charms.jpg",
-    productCount: "18 Products",
-    href: "/collections/charms",
+    id: 5,
+    title: "Pearls",
+    productCount: 18,
+    image: "/images/categories/Pearl.png",
+    href: "/collections/pearls",
   },
-
   {
-    id: "men",
+    id: 6,
     title: "Men",
-    image: "/images/categories/men.jpg",
-    productCount: "24 Products",
-    href: "/collections/men",
+    productCount: 24,
+    image: "/images/categories/Men.png",
+    href: "/collections/mens",
   },
 ];

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -10,6 +11,17 @@ import { DESKTOP_CATEGORY_LAYOUT } from "../data/desktop";
 
 export default function DesktopLayout() {
   const [activeIndex, setActiveIndex] = useState(2);
+
+  const CARD_SPACE =
+    DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth +
+    DESKTOP_CATEGORY_LAYOUT.carousel.gap;
+
+  const CENTER_OFFSET =
+    (DESKTOP_CATEGORY_LAYOUT.section.maxWidth -
+      DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth) /
+    2;
+
+  const translateX = CENTER_OFFSET - activeIndex * CARD_SPACE;
   return (
     <section
       className="
@@ -83,10 +95,19 @@ export default function DesktopLayout() {
           </button>
           <div className="flex justify-center">
             {/* Card */}
-            <div
+            <motion.div
               className="flex items-center"
               style={{
                 gap: DESKTOP_CATEGORY_LAYOUT.carousel.gap,
+              }}
+              animate={{
+                x: translateX,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 120,
+                damping: 22,
+                mass: 0.9,
               }}
             >
               {CATEGORIES.map((category, index) => (
@@ -96,7 +117,11 @@ export default function DesktopLayout() {
                     shrink-0
                     transition-all
                     duration-500
-                    ${index === activeIndex ? "scale-100 opacity-100" : "scale-90 opacity-60"}
+                    ${
+                      index === activeIndex
+                        ? "scale-100 opacity-100 z-10"
+                        : "scale-[0.88] opacity-50"
+                    }
                     `}
                   style={{
                     width: DESKTOP_CATEGORY_LAYOUT.carousel.cardWidth,
@@ -111,7 +136,7 @@ export default function DesktopLayout() {
                   />
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
           {/* Right */}
           <button

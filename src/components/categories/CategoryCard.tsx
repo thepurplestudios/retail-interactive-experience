@@ -23,6 +23,7 @@ export default function CategoryCard({
   image,
   productCount,
   editorial,
+
   href = "#",
 }: CategoryCardProps) {
   return (

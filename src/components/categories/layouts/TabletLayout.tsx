@@ -10,6 +10,11 @@ import { TABLET_CATEGORY_LAYOUT } from "../data/tablet";
 export default function TabletLayout() {
   const [activeIndex, setActiveIndex] = useState(2);
 
+  const previousIndex =
+    activeIndex === 0 ? CATEGORIES.length - 1 : activeIndex - 1;
+
+  const nextIndex = activeIndex === CATEGORIES.length - 1 ? 0 : activeIndex + 1;
+
   const previousCategory = () => {
     setActiveIndex((prev) => (prev === 0 ? CATEGORIES.length - 1 : prev - 1));
   };
@@ -45,13 +50,54 @@ export default function TabletLayout() {
 
         {/* Card */}
 
-        <div className="flex items-center justify-center gap-8">
+        <div className="relative flex items-center justify-center">
+          {/* Left Arrow */}
+
           <button
             onClick={previousCategory}
-            className="flex h-11 w-11 items-center justify-center rounded-full border bg-white"
+            className="
+      absolute
+      left-0
+      z-20
+      flex
+      h-11
+      w-11
+      items-center
+      justify-center
+      rounded-full
+      border
+      bg-white
+    "
           >
             <ChevronLeft size={20} />
           </button>
+
+          {/* Previous Preview */}
+
+          <div
+            className="absolute left-16 overflow-hidden rounded-[32px] opacity-60"
+            style={{
+              width: TABLET_CATEGORY_LAYOUT.preview.visibleWidth,
+              height: TABLET_CATEGORY_LAYOUT.card.height,
+            }}
+          >
+            <div
+              style={{
+                width: TABLET_CATEGORY_LAYOUT.card.width,
+                height: TABLET_CATEGORY_LAYOUT.card.height,
+              }}
+            >
+              <CategoryCard
+                title={CATEGORIES[previousIndex].title}
+                image={CATEGORIES[previousIndex].image}
+                productCount={CATEGORIES[previousIndex].productCount}
+                editorial={CATEGORIES[previousIndex].editorial}
+                href={CATEGORIES[previousIndex].href}
+              />
+            </div>
+          </div>
+
+          {/* Active */}
 
           <div
             style={{
@@ -68,9 +114,48 @@ export default function TabletLayout() {
             />
           </div>
 
+          {/* Next Preview */}
+
+          <div
+            className="absolute right-16 overflow-hidden rounded-[32px] opacity-60"
+            style={{
+              width: TABLET_CATEGORY_LAYOUT.preview.visibleWidth,
+              height: TABLET_CATEGORY_LAYOUT.card.height,
+            }}
+          >
+            <div
+              style={{
+                width: TABLET_CATEGORY_LAYOUT.card.width,
+                height: TABLET_CATEGORY_LAYOUT.card.height,
+              }}
+            >
+              <CategoryCard
+                title={CATEGORIES[nextIndex].title}
+                image={CATEGORIES[nextIndex].image}
+                productCount={CATEGORIES[nextIndex].productCount}
+                editorial={CATEGORIES[nextIndex].editorial}
+                href={CATEGORIES[nextIndex].href}
+              />
+            </div>
+          </div>
+
+          {/* Right Arrow */}
+
           <button
             onClick={nextCategory}
-            className="flex h-11 w-11 items-center justify-center rounded-full border bg-white"
+            className="
+      absolute
+      right-0
+      z-20
+      flex
+      h-11
+      w-11
+      items-center
+      justify-center
+      rounded-full
+      border
+      bg-white
+    "
           >
             <ChevronRight size={20} />
           </button>

@@ -15,7 +15,7 @@ export const TABLET_CATEGORY_LAYOUT = {
   },
 
   preview: {
-    visibleWidth: 120,
+    visibleWidth: 100,
     gap: 32,
   },
 

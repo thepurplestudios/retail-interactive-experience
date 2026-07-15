@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -14,6 +15,8 @@ interface CategoryCardProps {
     audience: string;
   };
 
+  interaction?: "hover" | "auto";
+
   href?: string;
   size?: "desktop" | "tablet" | "mobile";
 }
@@ -23,7 +26,7 @@ export default function CategoryCard({
   image,
   productCount,
   editorial,
-
+  interaction = "hover",
   href = "#",
 }: CategoryCardProps) {
   return (
@@ -135,6 +138,69 @@ export default function CategoryCard({
           {editorial.audience}
         </h2>
       </div>
+
+      {interaction === "auto" && (
+        <motion.div
+          key={`${editorial.category}-${editorial.audience}`}
+          className="
+      pointer-events-none
+      absolute
+      left-8
+      top-1/2
+      -translate-y-1/2
+      text-white
+    "
+          initial={{
+            opacity: 0,
+            x: -24,
+          }}
+          animate={{
+            opacity: [0, 1, 1, 0],
+            x: [-24, 0, 0, 0],
+          }}
+          transition={{
+            duration: 2.8,
+            times: [0, 0.15, 0.8, 1],
+            ease: "easeOut",
+          }}
+        >
+          <div className="ml-1.5">
+            <p
+              className="
+          text-xs
+          font-medium
+          tracking-[0.35em]
+          uppercase
+          text-white/90
+        "
+            >
+              {editorial.category}
+            </p>
+
+            <p
+              className="
+          mt-2
+          text-lg
+          tracking-[0.35em]
+          uppercase
+          text-white/80
+        "
+            >
+              FOR
+            </p>
+          </div>
+
+          <h2
+            className="
+        font-display
+        text-6xl
+        leading-none
+      "
+          >
+            {editorial.audience}
+          </h2>
+        </motion.div>
+      )}
 
       {/* Content */}
       <div

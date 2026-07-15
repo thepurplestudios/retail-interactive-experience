@@ -58,19 +58,31 @@ export default function TabletLayout() {
             onClick={previousCategory}
             className="
               absolute
-              left-0
-              z-20
+              left-2
+
+              z-10
+
               flex
-              h-11
-              w-11
+              h-12
+              w-12
               items-center
               justify-center
+
               rounded-full
+
               border
+
               bg-white
             "
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft
+              size={20}
+              className="
+                  transition-transform
+                  duration-300
+                  group-hover:-translate-x-0.5
+                "
+            />
           </button>
 
           {/* Previous Preview */}
@@ -126,6 +138,7 @@ export default function TabletLayout() {
               image={CATEGORIES[activeIndex].image}
               productCount={CATEGORIES[activeIndex].productCount}
               editorial={CATEGORIES[activeIndex].editorial}
+              interaction="auto"
               href={CATEGORIES[activeIndex].href}
             />
           </motion.div>
@@ -160,20 +173,32 @@ export default function TabletLayout() {
           <button
             onClick={nextCategory}
             className="
-      absolute
-      right-0
-      z-20
-      flex
-      h-11
-      w-11
-      items-center
-      justify-center
-      rounded-full
-      border
-      bg-white
-    "
+              absolute
+              right-2
+
+              z-10
+
+              flex
+              h-12
+              w-12
+              items-center
+              justify-center
+
+              rounded-full
+
+              border
+
+              bg-white
+            "
           >
-            <ChevronRight size={20} />
+            <ChevronRight
+              size={20}
+              className="
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-0.5
+                "
+            />
           </button>
         </div>
       </div>

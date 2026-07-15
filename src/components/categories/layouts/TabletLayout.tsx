@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 import CategoryCard from "../CategoryCard";
 import { CATEGORIES } from "../data/categories";
@@ -56,18 +57,18 @@ export default function TabletLayout() {
           <button
             onClick={previousCategory}
             className="
-      absolute
-      left-0
-      z-20
-      flex
-      h-11
-      w-11
-      items-center
-      justify-center
-      rounded-full
-      border
-      bg-white
-    "
+              absolute
+              left-0
+              z-20
+              flex
+              h-11
+              w-11
+              items-center
+              justify-center
+              rounded-full
+              border
+              bg-white
+            "
           >
             <ChevronLeft size={20} />
           </button>
@@ -75,7 +76,7 @@ export default function TabletLayout() {
           {/* Previous Preview */}
 
           <div
-            className="absolute left-16 overflow-hidden rounded-[32px] opacity-60"
+            className="absolute left-16 overflow-hidden rounded-[32px] opacity-45 scale-90"
             style={{
               width: TABLET_CATEGORY_LAYOUT.preview.visibleWidth,
               height: TABLET_CATEGORY_LAYOUT.card.height,
@@ -99,7 +100,22 @@ export default function TabletLayout() {
 
           {/* Active */}
 
-          <div
+          <motion.div
+            key={activeIndex}
+            initial={{
+              opacity: 0,
+              scale: 0.94,
+              y: 18,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.45,
+              ease: "easeOut",
+            }}
             style={{
               width: TABLET_CATEGORY_LAYOUT.card.width,
               height: TABLET_CATEGORY_LAYOUT.card.height,
@@ -112,12 +128,12 @@ export default function TabletLayout() {
               editorial={CATEGORIES[activeIndex].editorial}
               href={CATEGORIES[activeIndex].href}
             />
-          </div>
+          </motion.div>
 
           {/* Next Preview */}
 
           <div
-            className="absolute right-16 overflow-hidden rounded-[32px] opacity-60"
+            className="absolute right-16 overflow-hidden rounded-[32px] opacity-45 scale-90"
             style={{
               width: TABLET_CATEGORY_LAYOUT.preview.visibleWidth,
               height: TABLET_CATEGORY_LAYOUT.card.height,

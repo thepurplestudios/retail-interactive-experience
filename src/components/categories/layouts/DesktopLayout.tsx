@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -27,6 +27,33 @@ export default function DesktopLayout() {
     if (index >= CATEGORIES.length) return 0;
     return index;
   };
+
+  const previousCategory = useCallback(() => {
+    setActiveIndex((prev) => wrapIndex(prev - 1));
+  }, []);
+
+  const nextCategory = useCallback(() => {
+    setActiveIndex((prev) => wrapIndex(prev + 1));
+  }, []);
+
+  // Keyboard
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        previousCategory();
+      }
+
+      if (event.key === "ArrowRight") {
+        nextCategory();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [previousCategory, nextCategory]);
 
   return (
     <section
@@ -63,17 +90,17 @@ export default function DesktopLayout() {
 
         <div
           className="
-    relative
-    flex
-    items-center
-    justify-center
-    py-8
-  "
+            relative
+            flex
+            items-center
+            justify-center
+            py-8
+          "
         >
           {" "}
           {/* Left */}
           <button
-            onClick={() => setActiveIndex((prev) => wrapIndex(prev - 1))}
+            onClick={previousCategory}
             className="
               absolute
               left-10
@@ -100,8 +127,18 @@ export default function DesktopLayout() {
             {/* Card */}
             <motion.div
               className="flex items-center will-change-transform"
+              drag="x"
+              dragConstraints={{
+                left: 0,
+                right: 0,
+              }}
+              dragElastic={0.08}
+              whileDrag={{
+                cursor: "grabbing",
+              }}
               style={{
                 gap: DESKTOP_CATEGORY_LAYOUT.carousel.gap,
+                cursor: "grab",
               }}
               animate={{
                 x: translateX,
@@ -111,6 +148,15 @@ export default function DesktopLayout() {
                 stiffness: 120,
                 damping: 22,
                 mass: 0.9,
+              }}
+              onDragEnd={(_, info) => {
+                if (info.offset.x < -80) {
+                  nextCategory();
+                }
+
+                if (info.offset.x > 80) {
+                  previousCategory();
+                }
               }}
             >
               {CATEGORIES.map((category, index) => {
@@ -161,7 +207,7 @@ export default function DesktopLayout() {
           </div>
           {/* Right */}
           <button
-            onClick={() => setActiveIndex((prev) => wrapIndex(prev + 1))}
+            onClick={nextCategory}
             className="
               absolute
               right-10

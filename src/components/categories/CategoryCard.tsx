@@ -165,15 +165,44 @@ export default function CategoryCard({
           </p>{" "}
         </div>
 
-        <ArrowRight
-          size={20}
+        <div
           className="
-            shrink-0
-            transition-transform
-            duration-500
-            group-hover:translate-x-1
-          "
-        />
+    group/arrow
+
+    flex
+    h-11
+    w-11
+    items-center
+    justify-center
+
+    rounded-full
+
+    border
+    border-white/20
+
+    bg-white/10
+    backdrop-blur-sm
+
+    transition-all
+    duration-300
+
+    hover:bg-white
+    hover:border-white
+  "
+        >
+          <ArrowRight
+            size={18}
+            className="
+      text-white
+
+      transition-all
+      duration-300
+
+      group-hover/arrow:translate-x-1
+      group-hover/arrow:text-black
+    "
+          />
+        </div>
       </div>
     </Link>
   );

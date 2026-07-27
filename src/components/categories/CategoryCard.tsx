@@ -154,9 +154,13 @@ export default function CategoryCard({
             opacity: 0,
             x: -24,
           }}
-          animate={{
+          whileInView={{
             opacity: [0, 1, 1, 0],
             x: [-24, 0, 0, 0],
+          }}
+          viewport={{
+            once: true,
+            amount: 0.5,
           }}
           transition={{
             duration: 2.8,

@@ -25,7 +25,7 @@ export default function TabletLayout() {
   };
 
   return (
-    <section className="hidden md:block lg:hidden py-24">
+    <section className="hidden md:block lg:hidden py-5!">
       <div
         className="mx-auto"
         style={{
@@ -114,6 +114,12 @@ export default function TabletLayout() {
 
           <motion.div
             key={activeIndex}
+            drag="x"
+            dragConstraints={{
+              left: 0,
+              right: 0,
+            }}
+            dragElastic={0.12}
             initial={{
               opacity: 0,
               scale: 0.94,
@@ -122,15 +128,34 @@ export default function TabletLayout() {
             animate={{
               opacity: 1,
               scale: 1,
+              x: 0,
               y: 0,
             }}
-            transition={{
-              duration: 0.45,
-              ease: "easeOut",
+            whileDrag={{
+              scale: 0.98,
+              cursor: "grabbing",
             }}
+            transition={{
+              type: "spring",
+              stiffness: 180,
+              damping: 24,
+              mass: 0.9,
+            }}
+            onDragEnd={(_, info) => {
+              if (info.offset.x < -TABLET_CATEGORY_LAYOUT.swipe.threshold) {
+                nextCategory();
+                return;
+              }
+
+              if (info.offset.x > TABLET_CATEGORY_LAYOUT.swipe.threshold) {
+                previousCategory();
+              }
+            }}
+            className="relative z-10 touch-pan-y"
             style={{
               width: TABLET_CATEGORY_LAYOUT.card.width,
               height: TABLET_CATEGORY_LAYOUT.card.height,
+              cursor: "grab",
             }}
           >
             <CategoryCard

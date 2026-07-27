@@ -23,4 +23,8 @@ export const TABLET_CATEGORY_LAYOUT = {
     size: 48,
     offset: 24,
   },
+
+  swipe: {
+    threshold: 70,
+  },
 };

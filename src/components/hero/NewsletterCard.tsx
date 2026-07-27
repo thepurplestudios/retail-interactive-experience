@@ -152,7 +152,7 @@ export function NewsletterCard({
         className="relative h-full w-full"
         style={
           {
-            "--newsletter-bg": "#bebdbd",
+            "--newsletter-bg": "#d8c8f0ac",
             "--newsletter-text": "#2E2435",
             "--newsletter-text-muted": "#5F576B",
             "--newsletter-accent": "#4B3A63",

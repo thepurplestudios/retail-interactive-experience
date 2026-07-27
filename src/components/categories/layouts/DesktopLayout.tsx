@@ -60,7 +60,7 @@ export default function DesktopLayout() {
       className="
         hidden
         lg:block
-        py-28
+        py-10!
       "
     >
       <div
@@ -72,7 +72,7 @@ export default function DesktopLayout() {
         {/* Heading */}
 
         <div
-          className="mx-auto mb-16 text-center"
+          className="mx-auto mb-4! text-center"
           style={{
             maxWidth: DESKTOP_CATEGORY_LAYOUT.header.maxWidth,
           }}
@@ -84,6 +84,10 @@ export default function DesktopLayout() {
           <h2 className="font-display text-6xl leading-none">
             Find Your Style
           </h2>
+
+          <p className="mt-5! text-xs italic tracking-[0.08em] text-neutral-400">
+            your cursor might reveal something ✦
+          </p>
         </div>
 
         {/* Carousel */}
@@ -94,7 +98,7 @@ export default function DesktopLayout() {
             flex
             items-center
             justify-center
-            py-8
+            py-8!
           "
         >
           {" "}

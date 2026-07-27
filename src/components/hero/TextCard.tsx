@@ -73,7 +73,7 @@ export default function TextCard({
   overflow-hidden
   rounded-[28px]
 
-  bg-[#E8DFD3]
+  bg-[#d8c8f0ac]
   border border-white/70
 
   ${ui.wrapper}

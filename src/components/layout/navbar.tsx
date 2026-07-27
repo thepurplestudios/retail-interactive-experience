@@ -62,7 +62,7 @@ export function Navbar() {
           border
           border-white/30
 
-          bg-[rgba(216,200,240,0.45)]
+          bg-[#d8c8f073]
           backdrop-blur-xl
 
           shadow-[0_8px_24px_rgba(0,0,0,0.06)]

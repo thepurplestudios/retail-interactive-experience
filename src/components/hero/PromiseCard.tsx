@@ -52,7 +52,7 @@ export function PromiseCard({ size = "desktop" }: PromiseCardProps) {
   const ui = promiseCardStyles[size];
 
   return (
-    <HeroCard className="h-full w-full bg-[#E8DFD3] border-white/60 overflow-hidden">
+    <HeroCard className="h-full w-full bg-[#d8c8f0ac] border-white/60 overflow-hidden">
       <div className={`h-full flex flex-col ${ui.align} ${ui.wrapper}`}>
         <p
           className={`

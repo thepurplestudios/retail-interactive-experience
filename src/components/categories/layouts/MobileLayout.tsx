@@ -99,11 +99,7 @@ export default function MobileLayout() {
               height: MOBILE_CATEGORY_LAYOUT.card.height,
             }}
           >
-            <AnimatePresence
-              initial={false}
-              custom={direction}
-              mode="popLayout"
-            >
+            <AnimatePresence custom={direction} mode="popLayout">
               <motion.div
                 key={activeIndex}
                 custom={direction}
